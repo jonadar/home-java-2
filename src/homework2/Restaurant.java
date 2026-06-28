@@ -12,7 +12,7 @@ public class Restaurant{
 	protected boolean isOpen;
 	protected double deliveryFee;
 	private static int restaurantCount = 1;
-	private final static Comparator<Restaurant> comparator = (r1, r2) -> Double.compare(r2.rating, r1.rating);
+	private final static Comparator<Restaurant> comparator = (r1, r2) -> Double.compare(r2.rating, r1.rating);  // from high to low
 	
 	public int getRestaurantCode() { return restaurantCode; }
 	public String getName() { return name; }
@@ -20,6 +20,7 @@ public class Restaurant{
 	public double getRating() { return rating; }
 	public boolean isOpen() { return isOpen; }
 	public double getDeliveryFee() { return deliveryFee; }
+	public static Comparator<Restaurant> getComparator() { return comparator; }
 	
 	
 	public Restaurant(String name, String kitchenType, double rating, boolean isOpen,
@@ -89,9 +90,5 @@ public class Restaurant{
 			return other.restaurantCode == this.restaurantCode; // didnt do by name aswell since it is sometimes possible to have 2 restuarants with the same name
 		}
 		return false;
-	}
-	
-	public static int compare(Restaurant r1, Restaurant r2) {
-		return comparator.compare(r1, r2);
 	}
 }

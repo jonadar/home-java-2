@@ -53,10 +53,14 @@ public class Admin {
 			System.out.println("9. show rider with most deliveries");
 			System.out.println("10. update restaurant status");
 			System.out.println("11. sort lists");
-			System.out.println("12. logout");
+			System.out.println("12. show system orders total price");
+			System.out.println("13. show system report");
+			System.out.println("14. add fastfood restaurant (wildcard func)");
+			System.out.println("15. show premium restaurants");
+			System.out.println("16. logout");
 			
-			int option = UserInput.getIntFromRange(1, 12, "option");
-			if(option == 12) break;
+			int option = UserInput.getIntFromRange(1, 16, "option");
+			if(option == 16) break;
 			
 			switch (option) {
 				case 1:
@@ -95,7 +99,32 @@ public class Admin {
 					break;
 				case 11:
 					// TODO: check this works
+					// currently sorts strings but is case sensitive
 					DDB.sortByOption();
+					break;
+				case 12:
+					System.out.println("total order prices in system are: " + DDB.getSumOfAllOrdersPrices()); // using stream api
+					break;
+				case 13:
+					System.out.println("=====================   system report  ====================");
+					System.out.println("system restaurants: ");
+					SystemReports.displayWildcardList(DDB.getRestaurants());
+					System.out.println("system has " + DDB.getOrders().size() + " orders.");
+					System.out.println("system has " + DDB.getRiders().size() + " riders.");
+					System.out.println("system has " + DDB.getRestaurantAdmins().size() + " restaurant admins.");
+					System.out.println("total orders value is " + SystemReports.getTotalOrderFinalPriceSum(DDB.getOrders()));
+					Customer bestCustomer = SystemReports.getGreatestItem(DDB.getCustomers());
+					if(bestCustomer != null) {
+						System.out.println("the customer with most money to spend is " + bestCustomer);
+					}
+					System.out.println("============================================================");
+					break;
+					
+				case 14:
+					SystemReports.addNewFastfoodRestaurant(DDB.getRestaurants()); // not good, but they asked for it :(
+					break;
+				case 15:
+					DDB.showPremiumRestaurants();
 					break;
 			}
 		}

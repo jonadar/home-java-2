@@ -299,8 +299,9 @@ public class Services {
 		return null;
 	}
 	
-	// propt for rider and order and attempt to assign them to eachother, returns true if succeded
+	// prompt for rider and order and attempt to assign them to eachother, returns true if succeded
 	public static boolean assignOrderToRider(ArrayList<Rider> riders, ArrayList<Order> orders) {
+		
 		try {
 			Rider rider = findRider(UserInput.getId(), riders);
 			Order order = findOrder(UserInput.getInt("order"), orders);
@@ -394,6 +395,8 @@ public class Services {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {
 			ConsolePrinter.printError(e);
+		} finally {
+			System.out.println("done trying to add to restaurant " + restaurantIndex + "."); // not usefull, but need to use finally block for assignment :(
 		}
 		
 		return newOrder;

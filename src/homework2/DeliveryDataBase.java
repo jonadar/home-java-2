@@ -2,11 +2,14 @@ package homework2;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import Utils.ConsolePrinter;
 import Utils.UserInput;
 import Utils.Validation;
 
@@ -389,6 +392,7 @@ public class DeliveryDataBase {
 	}
 	
 	// pick a list to sort then get sort types to pick from
+	// currently sorts strings but is case sensitive
 	public void sortByOption() {
 		final ArrayList<String> options = new ArrayList<>(List.of("1. sort customers by credit",
 				"2. sort customers by first name",
@@ -405,10 +409,12 @@ public class DeliveryDataBase {
 		
 		switch (option) {
 			case 1:
-				Collections.sort(this.customers);
+				Collections.sort(this.customers); // sorts by remaining credit, customer implements Comparable.
+				Services.displayArrayAsNumberedList(this.customers);
 				break;
 			case 2:
 				this.customers.sort((c1, c2) -> c1.getfirstName().compareTo(c2.getfirstName()));
+				Services.displayArrayAsNumberedList(this.customers);
 				break;
 			case 3:
 				this.riders.sort((r1, r2) -> {
@@ -416,15 +422,45 @@ public class DeliveryDataBase {
 					int r2deliveries = r2.getOrders().size() - riderPedningOrders(r2.getId()).size();
 					return Integer.compare(r2deliveries, r1deliveries); // highest to lowest
 				});
+				Services.displayArrayAsNumberedList(this.riders);
 				break;
 			case 4:
-				this.orders.sort((o1, o2) -> o1.getOrderDate().compareTo(o2.getOrderDate())); // TODO: issue with 3/3/2000 and 3/04/2000
+				this.orders.sort((o1, o2) -> {
+					try {
+						String[] split1 = o1.getOrderDate().split("/");
+						String[] split2 = o2.getOrderDate().split("/");
+						
+						int year1 = Integer.parseInt(split1[2]);
+						int year2 = Integer.parseInt(split2[2]);
+						
+						if (year1 != year2) return Integer.compare(year1, year2);
+						
+						int month1 = Integer.parseInt(split1[1]);
+						int month2 = Integer.parseInt(split2[1]);
+						
+						if (month1 != month2) return Integer.compare(month1, month2);
+						
+						int day1 = Integer.parseInt(split1[0]);
+						int day2 = Integer.parseInt(split2[0]);
+						
+						return Integer.compare(day1, day2);
+					} catch (NumberFormatException e) {
+						ConsolePrinter.printError("an order date was invalid");
+					} catch (Exception e) {
+						ConsolePrinter.printError("an order date was in wrong format");
+					}
+					
+					return 0;
+				});
+				Services.displayArrayAsNumberedList(this.orders);
 				break;
 			case 5:
-				this.orders.sort((o1, o2) -> Double.compare(o1.getFinalPrice(), o2.getFinalPrice()));
+				this.orders.sort(Order.getComparator());
+				Services.displayArrayAsNumberedList(this.orders);
 				break;
 			case 6:
-				this.restaurants.sort((r1, r2) -> Double.compare(r2.getRating(), r1.getRating())); // highest to lowest
+				this.restaurants.sort(Restaurant.getComparator()); // highest to lowest
+				Services.displayArrayAsNumberedList(this.restaurants);
 				break;
 
 		}
@@ -434,7 +470,7 @@ public class DeliveryDataBase {
 	
 	public void showOpenRestaurants() {
 		System.out.println("open restaurants: ");
-		this.restaurants.stream().filter(rest -> rest.isOpen()).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
+		this.restaurants.stream().filter(Restaurant::isOpen).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
 	}
 	
 	public void showPremiumRestaurants() {
@@ -444,10 +480,10 @@ public class DeliveryDataBase {
 	
 	public void showAvailableRiders() {
 		System.out.println("available riders: ");
-		this.riders.stream().filter(rider -> rider.getAvailable()).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
+		this.riders.stream().filter(Rider.checkAvailable).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
 	}
 	
 	public double getSumOfAllOrdersPrices() {
-		return this.orders.stream().map(order -> order.getFinalPrice()).reduce(0.0, (total, price) -> total + price);
+		return this.orders.stream().map(Order::getFinalPrice).reduce(0.0, (total, price) -> total + price);
 	}
 }

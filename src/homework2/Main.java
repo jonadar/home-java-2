@@ -30,11 +30,11 @@ public class Main {
 		DDB.addCustomer(new Customer("some", "guy", "Modiin 10 green place 4415", "2981294512", "oyaftsaf@gmaim",5210));
 		
 		//10 restaurants of each type
-		DDB.addRestaurant(new Restaurant("the big fat whale", "big", 5, true, 10));
+		DDB.addRestaurant(new Restaurant("the big fat whale", "mexican", 2, true, 10));
 		DDB.addRestaurant(new Restaurant("flying dutch people", "big", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("kuu & kang", "small", 5, true, 10));
-		DDB.addRestaurant(new Restaurant("the small not fat whale", "big", 5, true, 10));
-		DDB.addRestaurant(new Restaurant("faxxxutch people", "big", 5, true, 10));
+		DDB.addRestaurant(new Restaurant("the small not fat whale", "kosher", 5, true, 10));
+		DDB.addRestaurant(new Restaurant("faxxxutch people", "mexican", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("kvasnt & kang", "small", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("fasf big fat whale", "big", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("tttlying dutch people", "big", 5, true, 10));
@@ -44,31 +44,31 @@ public class Main {
 		DDB.addRestaurant(new FastFoodRestaurant("bob's burgers", "big", 5, true, 10, 15, 20));
 		DDB.addRestaurant(new FastFoodRestaurant("greg's ultra delux shwarma", "big", 5, true, 10, 3, 40));
 		DDB.addRestaurant(new FastFoodRestaurant("krusty burger", "big", 5, true, 10, 10, 23));
-		DDB.addRestaurant(new FastFoodRestaurant("kaflsflas", "big", 7, true, 10, 15, 20));
+		DDB.addRestaurant(new FastFoodRestaurant("kaflsflas", "small", 7, true, 10, 15, 20));
 		DDB.addRestaurant(new FastFoodRestaurant("blao xis", "big", 4, true, 10, 3, 40));
-		DDB.addRestaurant(new FastFoodRestaurant("dinmpa", "big", 5, true, 10, 10, 23));
-		DDB.addRestaurant(new FastFoodRestaurant("doom doom dum dum", "big", 2, true, 10, 15, 20));
-		DDB.addRestaurant(new FastFoodRestaurant("lary sucks", "big", 5, true, 10, 3, 40));
+		DDB.addRestaurant(new FastFoodRestaurant("dinmpa", "kosher", 5, true, 10, 10, 23));
+		DDB.addRestaurant(new FastFoodRestaurant("doom doom dum dum", "small", 2, true, 10, 15, 20));
+		DDB.addRestaurant(new FastFoodRestaurant("lary sucks", "kosher", 5, true, 10, 3, 40));
 		DDB.addRestaurant(new FastFoodRestaurant("michelle enjoyers", "big", 5, true, 10, 10, 23));
 		DDB.addRestaurant(new FastFoodRestaurant("big mac", "big", 5, true, 10, 10, 23));
 		
 		DDB.addRestaurant(new PremiumRestaurant("cavern on the green", "big", 5, true, 10, 120, 3));
 		DDB.addRestaurant(new PremiumRestaurant("little garden", "big", 5, true, 10, 150, 10));
-		DDB.addRestaurant(new PremiumRestaurant("canary blue", "big", 5, true, 10, 200, 5));
+		DDB.addRestaurant(new PremiumRestaurant("canary blue", "small", 5, true, 10, 200, 5));
 		DDB.addRestaurant(new PremiumRestaurant("sparrow", "big", 5, true, 10, 100, 10));
-		DDB.addRestaurant(new PremiumRestaurant("creme pao", "big", 5, true, 10, 120, 3));
-		DDB.addRestaurant(new PremiumRestaurant("poxter", "big", 5, true, 10, 150, 10));
-		DDB.addRestaurant(new PremiumRestaurant("noding", "big", 5, true, 10, 200, 5));
+		DDB.addRestaurant(new PremiumRestaurant("creme pao", "kosher", 5, true, 10, 120, 3));
+		DDB.addRestaurant(new PremiumRestaurant("poxter", "mexican", 5.4, true, 10, 150, 10));
+		DDB.addRestaurant(new PremiumRestaurant("noding", "big", 10, true, 10, 200, 5));
 		DDB.addRestaurant(new PremiumRestaurant("bill and jills dill grill", "big", 5, true, 10, 100, 10));
-		DDB.addRestaurant(new PremiumRestaurant("cda", "big", 5, true, 10, 200, 5));
-		DDB.addRestaurant(new PremiumRestaurant("BBA", "big", 5, true, 10, 100, 10));
+		DDB.addRestaurant(new PremiumRestaurant("cda", "small", 5, true, 10, 200, 5));
+		DDB.addRestaurant(new PremiumRestaurant("BBA", "big", 9.2, true, 10, 100, 10));
 		
 		// 10 Orders
 		DDB.addOrder(new Order(1, DDB.getRestaurants().get(15), 120, "6/3/2026"));
-		DDB.addOrder(new Order(2, DDB.getRestaurants().get(17), 20, "8/3/2026"));
-		DDB.addOrder(new Order(3, DDB.getRestaurants().get(11), 50, "16/3/2026"));
-		DDB.addOrder(new Order(4, DDB.getRestaurants().get(4), 200, "6/7/2026"));
-		DDB.addOrder(new Order(5, DDB.getRestaurants().get(1), 30, "15/3/2026"));
+		DDB.addOrder(new Order(2, DDB.getRestaurants().get(17), 20, "8/3/2023"));
+		DDB.addOrder(new Order(3, DDB.getRestaurants().get(11), 50, "16/3/2021"));
+		DDB.addOrder(new Order(4, DDB.getRestaurants().get(4), 200, "6/7/2005"));
+		DDB.addOrder(new Order(5, DDB.getRestaurants().get(1), 30, "15/3/2004"));
 		DDB.addOrder(new Order(6, DDB.getRestaurants().get(20), 44, "22/2/2026"));
 		DDB.addOrder(new Order(7, DDB.getRestaurants().get(21), 88, "6/4/2026"));
 		DDB.addOrder(new Order(8, DDB.getRestaurants().get(25), 152, "1/3/2026"));
@@ -134,9 +134,9 @@ public class Main {
 					break;
 				case(3):
 					// rider login using id
-					String id = UserInput.getName("rider id"); // can be any string and just fail
+					String id = UserInput.getId();
 				
-					try {						
+					try {
 						Rider rider = Services.findRider(id, DDB.getRiders());
 						
 						if(rider == null) { // this line might be useless now

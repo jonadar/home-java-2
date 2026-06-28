@@ -1,7 +1,5 @@
 package homework2;
 
-import java.util.function.Predicate;
-
 import Utils.UserInput;
 import Utils.Validation;
 
@@ -134,6 +132,6 @@ public class Customer implements Comparable<Customer> {
 	
 	@Override
 	public int compareTo(Customer other) {
-		return Double.compare(this.remainingCredit, other.remainingCredit);
+		return Double.compare(other.remainingCredit, this.remainingCredit); // high to low
 	}
 }

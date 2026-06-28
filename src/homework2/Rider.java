@@ -1,6 +1,7 @@
 package homework2;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 import Utils.UserInput;
 import Utils.Validation;
@@ -12,6 +13,8 @@ public class Rider {
 	private String vehicle;
 	private boolean isAvailable;
 	private ArrayList<Order> orders;
+	
+	public static final Predicate<Rider> checkAvailable = rider -> rider.getAvailable(); // using predicate as asked for in assignment
 	
 	public Rider(String id, String fullName, String phoneNumber, String vehicle, boolean isAvailable) {
 		this.id = id;
