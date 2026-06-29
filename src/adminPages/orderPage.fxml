@@ -2,26 +2,36 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="374.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="489.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrdersPageController">
    <children>
       <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="orders screen" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="297.0" layoutY="14.0" maxWidth="200.0" prefHeight="245.0" prefWidth="199.0" spacing="5.0">
+      <VBox layoutX="452.0" layoutY="25.0" maxWidth="200.0" prefHeight="245.0" prefWidth="199.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Orders" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showOrders" prefWidth="200.0" text="Show All Orders" textAlignment="CENTER" />
             <Button mnemonicParsing="false" prefWidth="200.0" text="Search Order by Code" textAlignment="CENTER" />
             <Button mnemonicParsing="false" prefWidth="200.0" text="Show Orders by Customer" textAlignment="CENTER" />
             <Button mnemonicParsing="false" prefWidth="200.0" text="Show Orders by Restaurant" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Highest Priced Order" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showHighestPriceOrder" prefWidth="200.0" text="Show Highest Priced Order" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="433.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="exit" textAlignment="CENTER" />
+      <Button layoutX="597.0" layoutY="449.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="exit" textAlignment="CENTER" />
+      <TableView fx:id="tblAllOrders" layoutX="40.0" layoutY="44.0" prefHeight="401.0" prefWidth="351.0">
+        <columns>
+          <TableColumn fx:id="codeCol" prefWidth="50.00003433227539" text="code" />
+          <TableColumn fx:id="resturantCol" prefWidth="73.99996185302734" text="resturant" />
+            <TableColumn fx:id="priceCol" prefWidth="75.33331298828125" text="price" />
+            <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="80.00001525878906" text="status" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
