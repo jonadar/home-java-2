@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="256.0" prefWidth="226.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="374.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="customers screen" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="Restaurants screen" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="14.0" layoutY="38.0" maxWidth="200.0" prefHeight="245.0" prefWidth="199.0">
+      <VBox layoutX="297.0" layoutY="14.0" maxWidth="200.0" prefHeight="245.0" prefWidth="199.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Customers" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Customer by Code" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Add New Customer" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Update Customer Details" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Customer Orders" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="View Ordered Restaurants" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="View Luxury Restaurants" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="exit" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Restaurants" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Restaurant by Code" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Add New Restaurant" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Update Restaurant Rating" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Open Restaurant" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Close Restaurant" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Restaurants by Type" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Open Restaurants" textAlignment="CENTER" />
          </children>
       </VBox>
+      <Button layoutX="433.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="exit" textAlignment="CENTER" />
    </children>
 </AnchorPane>
