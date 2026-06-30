@@ -17,15 +17,17 @@ import javafx.scene.Scene;
 
 public class Main extends Application {
 	public final static DeliveryDataBase DDB = new DeliveryDataBase();
-	
+	public static Stage stage;
 	@Override
 	public void start(Stage primaryStage) {
+		Main.stage = primaryStage;
+		
 		try {
 			loadDataStatic(DDB);
 			
-//			Parent root = FXMLLoader.load(getClass().getResource("/application/openingPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/openingPage.fxml"));
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/adminPages/orderPage.fxml"));
+			
 			Scene scene = new Scene(root);
 			
 			primaryStage.setScene(scene);

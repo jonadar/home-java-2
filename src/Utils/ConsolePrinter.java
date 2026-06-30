@@ -1,16 +1,17 @@
 package Utils;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class ConsolePrinter {
 
 	public static void printError(Exception e) {
-		System.out.print("\u001B[31m");
-		System.out.println("Error: " + e.getMessage());
-		System.out.print("\u001B[0m");
+		Alert alert = new Alert(AlertType.ERROR, e.getMessage());
+		alert.showAndWait();
 	}
 	
 	public static void printError(String message) {
-		System.out.print("\u001B[31m");
-		System.out.println("Error: " + message);
-		System.out.print("\u001B[0m");
+		Alert alert = new Alert(AlertType.ERROR, message);
+		alert.showAndWait();
 	}
 }

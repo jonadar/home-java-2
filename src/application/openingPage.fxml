@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="293.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="222.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.loginController">
    <children>
-      <VBox layoutX="75.0" layoutY="71.0" prefHeight="48.0" prefWidth="175.0" spacing="10.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="User Login" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="183.0" text="System Admin login" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="183.0" text="Customer" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="183.0" text="Rider" />
-         </children>
-      </VBox>
-      <Button layoutX="250.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: red;" text="Exit" textFill="WHITE" />
-      <Label layoutX="119.0" layoutY="26.0" text="Login as:">
+      <Button layoutX="220.0" layoutY="207.0" mnemonicParsing="false" onAction="#quit" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: red;" text="Exit" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="24.0" text="Login as:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <ComboBox fx:id="userType" layoutX="114.0" layoutY="28.0" onAction="#changeUserType" prefHeight="26.0" prefWidth="179.0" />
+      <VBox layoutX="2.0" layoutY="78.0" prefHeight="59.0" prefWidth="298.0" spacing="5.0">
+         <children>
+            <HBox fx:id="row1" prefHeight="0.0" prefWidth="284.0">
+               <children>
+                  <Label fx:id="labelField1" prefHeight="18.0" prefWidth="120.0" text="username">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="field1" prefHeight="361.0" prefWidth="235.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox fx:id="row2" prefHeight="0.0" prefWidth="284.0">
+               <children>
+                  <Label fx:id="labelField2" prefHeight="18.0" prefWidth="120.0" text="password">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="field2" prefHeight="63.0" prefWidth="235.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <Button layoutX="83.0" layoutY="158.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: cyan;" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
