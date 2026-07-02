@@ -72,7 +72,7 @@ public class Admin {
 					DDB.addRestaurantAdmin(rs);
 					break;
 				case 3:
-					Services.assignRestAdminToRestaurant(DDB.getRestaurantAdmins(), DDB.getRestaurants());
+					//Services.assignRestAdminToRestaurant(DDB.getRestaurantAdmins(), DDB.getRestaurants());
 					break;
 				case 4:
 					Restaurant rest = Services.addRestaurant(); // need to update code slightly for 3 options of rest type

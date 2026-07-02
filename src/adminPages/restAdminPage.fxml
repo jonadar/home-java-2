@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="421.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="421.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RestAdminController">
    <children>
       <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="Restaurant Admin Screen" textAlignment="CENTER">
          <font>
@@ -18,32 +18,26 @@
       </Label>
       <VBox layoutX="487.0" layoutY="52.0" maxWidth="200.0" prefHeight="33.0" prefWidth="199.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Restaurant Managers" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showAllMangers" prefWidth="200.0" text="Show All Restaurant Managers" textAlignment="CENTER" />
          </children>
       </VBox>
       <Button layoutX="623.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <VBox layoutX="487.0" layoutY="90.0" prefHeight="53.0" prefWidth="199.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#searchRider" prefWidth="200.0" text="Search Rider" textAlignment="CENTER" />
-            <TextField fx:id="text1" />
-         </children>
-      </VBox>
-      <VBox layoutX="487.0" layoutY="153.0" prefHeight="53.0" prefWidth="199.0">
+      <VBox layoutX="487.0" layoutY="92.0" prefHeight="53.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#updateManagerStatus" prefWidth="200.0" text="Update Manager Status" textAlignment="CENTER" />
             <TextField fx:id="text2" />
          </children>
       </VBox>
-      <VBox layoutX="487.0" layoutY="222.0" prefHeight="53.0" prefWidth="199.0">
+      <VBox layoutX="487.0" layoutY="152.0" prefHeight="53.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#searchRestaurantManager" prefWidth="200.0" text="Search Restaurant Manager" textAlignment="CENTER" />
             <TextField fx:id="text3" />
          </children>
       </VBox>
-      <TableView layoutX="14.0" layoutY="52.0" prefHeight="223.0" prefWidth="152.0">
+      <TableView fx:id="tblAllRestAdmin" layoutX="14.0" layoutY="52.0" prefHeight="223.0" prefWidth="152.0">
         <columns>
           <TableColumn fx:id="colusername" prefWidth="75.0" text="username" />
           <TableColumn fx:id="colname" prefWidth="75.0" text="name" />

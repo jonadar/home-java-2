@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.DeliveryDataBase;
+import homework2.Order;
 import homework2.RestAdmin;
 import homework2.Restaurant;
 import homework2.Services;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 public class RestAdminController {
+
+	private ObservableList<RestAdmin> restAdmins = FXCollections.observableArrayList(Main.DDB.getRestaurantAdmins());
 
 
     @FXML
@@ -25,9 +32,6 @@ public class RestAdminController {
 
     @FXML
     private TextField idResttext;
-
-    @FXML
-    private TextField text1;
 
     @FXML
     private TextField text2;
@@ -49,19 +53,36 @@ public class RestAdminController {
 
     @FXML
     void searchRestaurantManager(ActionEvent event) {
+    	try {
+    		String userName = text3.getText();
+    		RestAdmin restAdmin = Services.findRestAdmin(userName, Main.DDB.getRestaurantAdmins());
+			tblAllRestAdmin.setItems(FXCollections.observableArrayList(restAdmin));
+    	} catch (Exception e) {
+			ConsolePrinter.printError(e);
 
+    	}
     }
 
-    @FXML
-    void searchRider(ActionEvent event) {
-
-    }
 
     @FXML
     void updateManagerStatus(ActionEvent event) {
-
-    
+    	// to do
 
     }
+    
+    @FXML
+    private TableView<RestAdmin> tblAllRestAdmin;
+    
+    @FXML
+    void showAllMangers(ActionEvent event) {
+    	tblAllRestAdmin.setItems(restAdmins);
 
+    }
+    
+    public void initialize() {
+    	colname.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	colusername.setCellValueFactory(new PropertyValueFactory<>("username"));
+    	
+    	tblAllRestAdmin.setItems(restAdmins);
+    }
 }
