@@ -67,6 +67,22 @@ public class loginController {
     		
 	    	switch (selected) {
 			case UserType.Admin:
+				try {
+					String userName = field1.getText();
+					String pass = field2.getText();
+					
+					if(Main.DDB.getSystemAdministrator().login(userName, pass) == false) {
+						throw new Exception("username or password incorrect.");
+					}
+					
+					Parent root = FXMLLoader.load(getClass().getResource("/adminPages/adminPage.fxml"));
+					
+					Scene scene = new Scene(root);
+					
+					Main.stage.setScene(scene);
+				} catch (Exception e) {
+					ConsolePrinter.printError(e);
+				}
 				break;
 			case UserType.RestAdmin:				
 				break;
