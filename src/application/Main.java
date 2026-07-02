@@ -1,5 +1,7 @@
 package application;
 	
+import java.util.Stack;
+
 import homework2.Customer;
 import homework2.DeliveryDataBase;
 import homework2.FastFoodRestaurant;
@@ -18,15 +20,16 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	public final static DeliveryDataBase DDB = new DeliveryDataBase();
 	public static Stage stage;
+	public static Stack<Scene> sceneStack = new Stack<>();
+	
 	@Override
 	public void start(Stage primaryStage) {
-		Main.stage = primaryStage;
+		stage = primaryStage;
 		
 		try {
 			loadDataStatic(DDB);
 			
 			Parent root = FXMLLoader.load(getClass().getResource("/application/openingPage.fxml"));
-			
 			
 			Scene scene = new Scene(root);
 			
@@ -39,6 +42,15 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static void setScene(Scene scene) {
+		stage.setScene(scene);
+		sceneStack.push(scene);
+	}
+	
+	public static void goBackScene() {
+		if (!sceneStack.empty()) stage.setScene(sceneStack.pop());
 	}
 	
 	public void loadDataStatic(DeliveryDataBase DDB) {
