@@ -4,35 +4,58 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="929.0" prefWidth="1265.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerUserPageController">
+<AnchorPane prefHeight="810.0" prefWidth="1073.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerUserPageController">
    <children>
-      <VBox layoutX="758.0" layoutY="23.0" prefHeight="350.0" prefWidth="174.0" spacing="10.0">
+      <VBox layoutX="807.0" layoutY="283.0" prefHeight="186.0" prefWidth="203.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="view personal info" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="create new order" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="view orders" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="update personal info" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="view ordered restaurants" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="view ordered premium restaurants" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="search restaurant by code" />
+            <Button mnemonicParsing="false" onAction="#createOrder" prefHeight="26.0" prefWidth="200.0" text="create new order" />
+            <Button mnemonicParsing="false" onAction="#updatePersonalInfo" prefHeight="26.0" prefWidth="200.0" text="update personal info" />
+            <Button mnemonicParsing="false" onAction="#viewOrderedRestaurant" prefHeight="26.0" prefWidth="200.0" text="view ordered restaurants" />
+            <Button mnemonicParsing="false" onAction="#viewOrderedPremiumRestaurants" prefHeight="26.0" prefWidth="200.0" text="view ordered premium restaurants" />
+            <Button mnemonicParsing="false" onAction="#searchRestaurantByCode" prefHeight="26.0" prefWidth="200.0" text="search restaurant by code" />
          </children>
       </VBox>
-      <Button layoutX="867.0" layoutY="440.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Logout" textFill="WHITE" />
-      <VBox layoutX="952.0" layoutY="23.0" prefHeight="200.0" prefWidth="142.0" spacing="10.0">
+      <Button layoutX="981.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: red;" text="Logout" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <VBox layoutX="763.0" layoutY="25.0" prefHeight="110.0" prefWidth="203.0" spacing="10.0">
          <children>
-            <Label prefHeight="18.0" prefWidth="58.0" text="email:" />
-            <Label prefHeight="18.0" prefWidth="58.0" text="balance:" />
-            <Label prefHeight="18.0" prefWidth="58.0" text="name:" />
-            <Label prefHeight="18.0" prefWidth="58.0" text="phone:" />
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="58.0" text="email:" />
+                  <TextField fx:id="customerEmail" editable="false" prefHeight="0.0" prefWidth="147.0" promptText="mail" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="58.0" text="balance:" />
+                  <TextField fx:id="customerBalance" editable="false" promptText="amount" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="58.0" text="name:" />
+                  <TextField fx:id="customerName" editable="false" promptText="name" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="58.0" text="phone:" />
+                  <TextField fx:id="customerPhone" editable="false" promptText="phonenumber" />
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <Button layoutX="1010.0" layoutY="216.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="charge balance" />
-      <Button layoutX="1010.0" layoutY="252.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="withdraw balance" />
-      <Button layoutX="1010.0" layoutY="288.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="view balance" />
-      <TableView fx:id="restaurantTable" layoutX="14.0" layoutY="416.0" prefHeight="446.0" prefWidth="722.0">
+      <Button layoutX="763.0" layoutY="187.0" mnemonicParsing="false" onAction="#chargeBalance" prefHeight="26.0" prefWidth="112.0" text="charge balance" />
+      <Button layoutX="883.0" layoutY="187.0" mnemonicParsing="false" onAction="#withdrawBalance" prefHeight="26.0" prefWidth="112.0" text="withdraw balance" />
+      <TableView fx:id="restaurantTable" layoutX="14.0" layoutY="411.0" prefHeight="379.0" prefWidth="722.0">
          <columns>
             <TableColumn fx:id="restCodeCol" prefWidth="102.66666412353516" text="restaurant code" />
             <TableColumn fx:id="restNameCol" prefWidth="75.33333587646484" text="name" />
@@ -42,7 +65,7 @@
             <TableColumn fx:id="deliveryFeeCol" prefWidth="117.33331298828125" text="delivery fee" />
          </columns>
       </TableView>
-      <TableView fx:id="orderTable" layoutX="14.0" layoutY="23.0" prefHeight="382.0" prefWidth="722.0">
+      <TableView fx:id="orderTable" layoutX="14.0" layoutY="41.0" prefHeight="312.0" prefWidth="722.0">
         <columns>
           <TableColumn fx:id="codeCol" prefWidth="52.333335876464844" text="code" />
           <TableColumn fx:id="restaurantCol" prefWidth="76.66667175292969" text="restaurant" />
@@ -53,5 +76,18 @@
             <TableColumn fx:id="statusCol" prefWidth="139.0" text="status" />
         </columns>
       </TableView>
+      <Label layoutX="14.0" layoutY="6.0" text="My Orders">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="376.0" text="Restaurants">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="amountInput" layoutX="822.0" layoutY="218.0" prefHeight="25.0" prefWidth="174.0" promptText="amount" />
+      <Label layoutX="766.0" layoutY="222.0" prefHeight="17.0" prefWidth="57.0" text="amount:" />
+      <TextField fx:id="restaurantCodeInput" layoutX="806.0" layoutY="457.0" prefHeight="25.0" prefWidth="203.0" promptText="restaurant code" />
    </children>
 </AnchorPane>

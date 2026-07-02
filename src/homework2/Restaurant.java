@@ -19,6 +19,7 @@ public class Restaurant{
 	public String getKitchenType() { return kitchenType; }
 	public double getRating() { return rating; }
 	public boolean isOpen() { return isOpen; }
+	public boolean getIsOpen() { return isOpen; } // needed for PropertyValueFactory, don't delete
 	public double getDeliveryFee() { return deliveryFee; }
 	public static Comparator<Restaurant> getComparator() { return comparator; }
 	
