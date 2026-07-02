@@ -4,23 +4,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="554.0" prefWidth="987.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrdersPageController">
+<AnchorPane prefHeight="576.0" prefWidth="987.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.OrdersPageController">
    <children>
       <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="orders screen" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="704.0" layoutY="60.0" maxWidth="200.0" prefHeight="241.0" prefWidth="200.0" spacing="5.0">
+      <VBox layoutX="704.0" layoutY="60.0" maxWidth="200.0" prefHeight="73.0" prefWidth="200.0" spacing="5.0">
          <children>
             <Button mnemonicParsing="false" onAction="#showOrders" prefWidth="200.0" text="Show All Orders" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Order by Code" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Orders by Customer" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Orders by Restaurant" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#showHighestPriceOrder" prefWidth="200.0" text="Show Highest Priced Order" textAlignment="CENTER" />
          </children>
       </VBox>
@@ -37,5 +35,23 @@
             <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="57.55560302734375" text="status" />
         </columns>
       </TableView>
+      <VBox layoutX="707.0" layoutY="137.0" prefHeight="54.0" prefWidth="197.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#findOrder" prefWidth="200.0" text="Search Order by Code" textAlignment="CENTER" />
+            <TextField fx:id="text1" prefHeight="25.0" prefWidth="167.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="705.0" layoutY="214.0" prefHeight="51.0" prefWidth="193.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showCustomerOrders" prefWidth="200.0" text="Show Orders by Customer" textAlignment="CENTER" />
+            <TextField fx:id="text2" />
+         </children>
+      </VBox>
+      <VBox layoutX="701.0" layoutY="296.0" prefHeight="51.0" prefWidth="202.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showOrdersByRest" prefWidth="200.0" text="Show Orders by Restaurant" textAlignment="CENTER" />
+            <TextField fx:id="text3" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
