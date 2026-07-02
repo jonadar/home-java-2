@@ -50,7 +50,10 @@ public class Main extends Application {
 	}
 	
 	public static void goBackScene() {
-		if (!sceneStack.empty()) stage.setScene(sceneStack.pop());
+		if (sceneStack.size() >= 2) {			
+			sceneStack.pop();
+			stage.setScene(sceneStack.peek());
+		}
 	}
 	
 	public void loadDataStatic(DeliveryDataBase DDB) {
@@ -75,7 +78,7 @@ public class Main extends Application {
 		DDB.addCustomer(new Customer("some", "guy", "Modiin 10 green place 4415", "2981294512", "oyaftsaf@gmaim",5210));
 		
 		//10 restaurants of each type
-		DDB.addRestaurant(new Restaurant("the big fat whale", "mexican", 2, true, 10));
+		DDB.addRestaurant(new Restaurant("the big fat whale", "mexican", 2, true, 8));
 		DDB.addRestaurant(new Restaurant("flying dutch people", "big", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("kuu & kang", "small", 5, true, 10));
 		DDB.addRestaurant(new Restaurant("the small not fat whale", "kosher", 5, true, 10));
