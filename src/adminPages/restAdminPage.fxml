@@ -2,26 +2,42 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="374.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="421.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="Restaurant admin screen" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="297.0" layoutY="14.0" maxWidth="200.0" prefHeight="245.0" prefWidth="199.0" spacing="5.0">
+      <VBox layoutX="487.0" layoutY="14.0" maxWidth="200.0" prefHeight="75.0" prefWidth="199.0" spacing="5.0">
          <children>
             <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Restaurant Managers" textAlignment="CENTER" />
             <Button mnemonicParsing="false" prefWidth="200.0" text="Add Manager to Restaurant" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Rider" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Restaurant Manager" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Update Manager Status" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="433.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="exit" textAlignment="CENTER" />
+      <Button layoutX="623.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="exit" textAlignment="CENTER" />
+      <VBox layoutX="487.0" layoutY="118.0" prefHeight="53.0" prefWidth="199.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#searchRider" prefWidth="200.0" text="Search Rider" textAlignment="CENTER" />
+            <TextField fx:id="txt1" />
+         </children>
+      </VBox>
+      <VBox layoutX="487.0" layoutY="184.0" prefHeight="53.0" prefWidth="199.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#updateManagerStatus" prefWidth="200.0" text="Update Manager Status" textAlignment="CENTER" />
+            <TextField fx:id="text2" />
+         </children>
+      </VBox>
+      <VBox layoutX="487.0" layoutY="253.0" prefHeight="53.0" prefWidth="199.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#searchRestaurantManager" prefWidth="200.0" text="Search Restaurant Manager" textAlignment="CENTER" />
+            <TextField fx:id="text3" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
