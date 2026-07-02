@@ -174,10 +174,10 @@ public class Services {
 	}
 	
 	// prompt user for restaurant and restaurant admin and assign that admin to the restaurant
-	public static boolean assignRestAdminToRestaurant(ArrayList<RestAdmin> restaurantAdmins, ArrayList<Restaurant> restaurants) {
+	public static boolean assignRestAdminToRestaurant(ArrayList<RestAdmin> restaurantAdmins, ArrayList<Restaurant> restaurants, String username, int restcode) {
 		try {			
-			RestAdmin restAdmin = findRestAdmin(UserInput.getUsername(), restaurantAdmins);
-			Restaurant restaurant = findRestaurant(UserInput.getInt("restaurant code"), restaurants);
+			RestAdmin restAdmin = findRestAdmin(username, restaurantAdmins);
+			Restaurant restaurant = findRestaurant(restcode, restaurants);
 			if (restAdmin!= null && restaurant!=null) {
 				boolean success = restAdmin.addRestaurant(restaurant);
 				if (success) {
