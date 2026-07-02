@@ -13,11 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-public class loginController {
+public class LoginController {
 
     @FXML
     private TextField field1;
@@ -63,58 +62,61 @@ public class loginController {
 
     @FXML
     void login(ActionEvent event) {
-    		UserType selected = userType.getSelectionModel().getSelectedItem();
-    		
-	    	switch (selected) {
-			case UserType.Admin:
-				try {
-					String userName = field1.getText();
-					String pass = field2.getText();
-					
-					if(Main.DDB.getSystemAdministrator().login(userName, pass) == false) {
-						throw new Exception("username or password incorrect.");
-					}
-					
-					Parent root = FXMLLoader.load(getClass().getResource("/adminPages/adminPage.fxml"));
-					
-					Scene scene = new Scene(root);
-					
-					Main.stage.setScene(scene);
-				} catch (Exception e) {
-					ConsolePrinter.printError(e);
+		UserType selected = userType.getSelectionModel().getSelectedItem();
+		
+    	switch (selected) {
+		case UserType.Admin:
+			try {
+				String userName = field1.getText();
+				String pass = field2.getText();
+				
+				if(Main.DDB.getSystemAdministrator().login(userName, pass) == false) {
+					throw new Exception("username or password incorrect.");
 				}
-				break;
-			case UserType.RestAdmin:				
-				break;
-			case UserType.Customer:
-				try {
-					int code = Integer.parseInt(field1.getText());
-					
-					Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
-					
-					// customer.menu(Main.DDB);
-					Parent root = FXMLLoader.load(getClass().getResource("/userPages/customerUserPage.fxml"));
-					
-					Scene scene = new Scene(root);
-					
-					Main.stage.setScene(scene);
-				} catch (CustomerNotFoundException e) {
-					ConsolePrinter.printError("could not find user with that code");
-				} catch (NumberFormatException e) {
-					ConsolePrinter.printError("code must be valid integer");
-				} catch (Exception e) {
-					ConsolePrinter.printError(e);
-				}
-				break;
-			case UserType.Rider:
-				break;
-		}
+				
+				Parent root = FXMLLoader.load(getClass().getResource("/adminPages/adminPage.fxml"));
+				
+				Scene scene = new Scene(root);
+				
+				Main.setScene(scene);
+			} catch (Exception e) {
+				ConsolePrinter.printError(e);
+			}
+			break;
+		case UserType.RestAdmin:				
+			break;
+		case UserType.Customer:
+			try {
+				int code = Integer.parseInt(field1.getText());
+				
+				// find user and set in relevant controller
+				Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
+				
+				CustomerUserPageController.customer = customer;
+				
+				Parent root = FXMLLoader.load(getClass().getResource("/userPages/customerUserPage.fxml"));
+				
+				Scene scene = new Scene(root);
+				
+				Main.setScene(scene);
+			} catch (CustomerNotFoundException e) {
+				ConsolePrinter.printError("could not find user with that code");
+			} catch (NumberFormatException e) {
+				ConsolePrinter.printError("code must be valid integer");
+			} catch (Exception e) {
+				ConsolePrinter.printError(e);
+			}
+			break;
+		case UserType.Rider:
+			break;
+    	}
     }
 
     @FXML
     void quit(ActionEvent event) {
-    		// check how to do this
-    }
+    	// check how to do this
+    	Main.stage.close();
+    }	
     
     @FXML
     void initialize() {
