@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 
 import Utils.ConsolePrinter;
+import Utils.SaveManager;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,27 +15,27 @@ public class AdminPageController {
 
     @FXML
     void customerManagement(ActionEvent event) {
-    	loadScene("/adminPages/customerPage.fxml");
+    	Main.setScene("/adminPages/customerPage.fxml");
     }
 
     @FXML
     void orderManagment(ActionEvent event) {
-    	loadScene("/adminPages/orderPage.fxml");
+    	Main.setScene("/adminPages/orderPage.fxml");
     }
 
     @FXML
     void restaurantAdminManangment(ActionEvent event) {
-    	loadScene("/adminPages/restAdminPage.fxml");
+    	Main.setScene("/adminPages/restAdminPage.fxml");
     }
 
     @FXML
     void restaurantManagment(ActionEvent event) {
-    	loadScene("/adminPages/restaurantPage.fxml");
+    	Main.setScene("/adminPages/restaurantPage.fxml");
     }
 
     @FXML
     void riderManangment(ActionEvent event) {
-    	loadScene("/adminPages/riderPage.fxml");
+    	Main.setScene("/adminPages/riderPage.fxml");
     }
 
     @FXML
@@ -50,23 +51,14 @@ public class AdminPageController {
     
     @FXML
     void save(ActionEvent event) {
-
+    	SaveManager.save(Main.DDB);
     }
     
     @FXML
     void load(ActionEvent event) {
-    	
+    	SaveManager.load(Main.DDB);
+
     }
     
-    private void loadScene(String path) {
-    	try {
-    		Parent root = FXMLLoader.load(getClass().getResource(path));
-    		
-    		Scene scene = new Scene(root);
-    		
-    		Main.setScene(scene);
-    	} catch (IOException e) {
-			ConsolePrinter.printError("cannot find view " + path);
-		}
-    }
+    
 }
