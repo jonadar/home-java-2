@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.ArrayList;
+
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
@@ -44,8 +46,6 @@ public class customerPageController {
     @FXML
     private TextField luxuryText;
 
-    @FXML
-    private TextField moneyText;
 
     @FXML
     private TableView<Order> ordersOfCustomerTbl;
@@ -71,10 +71,6 @@ public class customerPageController {
     @FXML
     private TextField viewOrdersOfCustomerText;
 
-    @FXML
-    void AddMoney(ActionEvent event) {
-
-    }
 
     @FXML
     void addNewcustomer(ActionEvent event) {
@@ -96,7 +92,17 @@ public class customerPageController {
 
     @FXML
     void displayiRestsOfCustomer(ActionEvent event) {
-
+    	try {
+	    	Integer code = Integer.parseInt(displayiRestsOfCustomerText.getText());
+	    	Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
+	    	ArrayList<Restaurant> rests = Main.DDB.getCustomersOrderedRestaurants().get(customer.getCustomerCode());
+	    	if (rests != null && !rests.isEmpty()) {
+	    		ObservableList<Restaurant> restsList = FXCollections.observableArrayList(rests);
+	    		restTbl.setItems(restsList);
+	    }
+	    	} catch (Exception e) {
+				ConsolePrinter.printError(e);
+	    	}
     }
 
     @FXML
@@ -107,23 +113,45 @@ public class customerPageController {
 
     @FXML
     void luxuryrest(ActionEvent event) {
-
+    	try {
+    		Integer code = Integer.parseInt(luxuryText.getText());
+	    	Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
+	    	if (customer != null) {
+	    		ArrayList<Restaurant> primumRests = Main.DDB.customerOrdersFromPremiumRest(customer);
+	    		if (primumRests != null && !primumRests.isEmpty()) {
+		    		ObservableList<Restaurant> primumRestsList = FXCollections.observableArrayList(primumRests);
+		    		restTbl.setItems(primumRestsList);
+	    		}
+	    	}
+    	} catch (Exception e) {
+			ConsolePrinter.printError(e);
+    	}
     }
 
     @FXML
     void updateCustomerDetails(ActionEvent event) {
-
+    	// to do
     }
 
     @FXML
     void viewOrdersOfCustomer(ActionEvent event) {
+    	try {
+	    	Integer code = Integer.parseInt(viewOrdersOfCustomerText.getText());
+	    	ObservableList<Order> orders = FXCollections.observableArrayList();
+	    	for (Order order : Main.DDB.getOrders()) {
+	    		if (order.getCustomerCode() == code) {
+	    			orders.add(order);
+	    		}
+	    	}
+	    	ordersOfCustomerTbl.setItems(orders);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+    	}
+
 
     }
 
-    @FXML
-    void withdrawingMoney(ActionEvent event) {
-
-    }
+    
     public void initialize() {
     	//customers
     	cusCodeCol.setCellValueFactory(new PropertyValueFactory<>("customerCode"));
@@ -133,7 +161,7 @@ public class customerPageController {
     	CustomersTbl.setItems(Customers);
     	
     	// rests
-    	cusCodeCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
+    	restColcode.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
     	restColname.setCellValueFactory(new PropertyValueFactory<>("name"));
     	
     	// orders
