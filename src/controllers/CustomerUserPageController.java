@@ -186,7 +186,7 @@ public class CustomerUserPageController {
         ArrayList<Order> customerOrders = Main.DDB.getCustomerOrders().getOrDefault(customer.getCustomerCode(), new ArrayList<Order>());
         orders = FXCollections.observableArrayList(customerOrders);
         
-        ArrayList<Restaurant> customerRestaurants = Main.DDB.getCustomersOrderedRestaurants().get(customer.getCustomerCode());
+        ArrayList<Restaurant> customerRestaurants = Main.DDB.getCustomersOrderedRestaurants().getOrDefault(customer.getCustomerCode(), new ArrayList<Restaurant>());
         restaurants = FXCollections.observableArrayList(customerRestaurants);
         
         orderTable.setItems(orders);

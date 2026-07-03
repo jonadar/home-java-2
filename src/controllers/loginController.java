@@ -9,9 +9,6 @@ import homework2.RestAdmin;
 import homework2.Services;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,25 +39,30 @@ public class LoginController {
 
     @FXML
     void changeUserType(ActionEvent event) {
-    		UserType selected = userType.getSelectionModel().getSelectedItem();
-    		
-    		// set fields to match user type trying to log-in
-    		switch (selected) {
-			case UserType.Admin, UserType.RestAdmin:
-				row2.setVisible(true);
-				labelField1.setText("username");				
-				break;
-			case UserType.Customer:
-				labelField1.setText("code");
-				row2.setVisible(false);
-				break;
-			case UserType.Rider:
-				labelField1.setText("id");
-				row2.setVisible(false);
-				break;
+		UserType selected = userType.getSelectionModel().getSelectedItem();
+		
+		// set fields to match user type trying to log-in
+		switch (selected) {
+		case UserType.Admin, UserType.RestAdmin:
+			row2.setVisible(true);
+			labelField1.setText("username");			
+			break;
+		case UserType.Customer:
+			labelField1.setText("code");
+			row2.setVisible(false);
+			break;
+		case UserType.Rider:
+			labelField1.setText("id");
+			row2.setVisible(false);
+			break;
 		}
+		
+		clearFields();
     }
 
+    /**
+     * handle login for all types of users
+     */
     @FXML
     void login(ActionEvent event) {
 		UserType selected = userType.getSelectionModel().getSelectedItem();
@@ -137,5 +139,10 @@ public class LoginController {
     void initialize() {
     		userType.getItems().addAll(UserType.values()); // add options to combo box
     		userType.getSelectionModel().select(UserType.Admin); // set default value
+    }
+    
+    public void clearFields() {
+    	field1.setText("");
+    	field2.setText("");
     }
 }

@@ -1,0 +1,30 @@
+Reg;the big fat whale;mexican;2.0;true;8.0
+Reg;flying dutch people;big;5.0;true;10.0
+Reg;kuu & kang;small;5.0;true;10.0
+Reg;the small not fat whale;kosher;5.0;true;10.0
+Reg;faxxxutch people;mexican;5.0;true;10.0
+Reg;kvasnt & kang;small;5.0;true;10.0
+Reg;fasf big fat whale;big;5.0;true;10.0
+Reg;tttlying dutch people;big;5.0;true;10.0
+Reg;yyklint & kang;small;5.0;true;10.0
+Reg;xxlint & kang;small;5.0;true;10.0
+Fst;bob's burgers;big;5.0;true;10.0;15.0;20.0
+Fst;greg's ultra delux shwarma;big;5.0;true;10.0;3.0;40.0
+Fst;krusty burger;big;5.0;true;10.0;10.0;23.0
+Fst;kaflsflas;small;7.0;true;10.0;15.0;20.0
+Fst;blao xis;big;4.0;true;10.0;3.0;40.0
+Fst;dinmpa;kosher;5.0;true;10.0;10.0;23.0
+Fst;doom doom dum dum;small;2.0;true;10.0;15.0;20.0
+Fst;lary sucks;kosher;5.0;true;10.0;3.0;40.0
+Fst;michelle enjoyers;big;5.0;true;10.0;10.0;23.0
+Fst;big mac;big;5.0;true;10.0;10.0;23.0
+Prm;cavern on the green;big;5.0;true;10.0;120.0;3.0
+Prm;little garden;big;5.0;true;10.0;150.0;10.0
+Prm;canary blue;small;5.0;true;10.0;200.0;5.0
+Prm;sparrow;big;5.0;true;10.0;100.0;10.0
+Prm;creme pao;kosher;5.0;true;10.0;120.0;3.0
+Prm;poxter;mexican;5.4;true;10.0;150.0;10.0
+Prm;noding;big;10.0;true;10.0;200.0;5.0
+Prm;bill and jills dill grill;big;5.0;true;10.0;100.0;10.0
+Prm;cda;small;5.0;true;10.0;200.0;5.0
+Prm;BBA;big;9.2;true;10.0;100.0;10.0

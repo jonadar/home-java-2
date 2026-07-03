@@ -16,6 +16,7 @@ public class RestAdmin extends Admin{
 	}
 
 	public ArrayList<Restaurant> getRestaurants() { return restaurants; }
+	public String getPassword() { return this.password; }
 	
 	public boolean addRestaurant(Restaurant rest) {
 		if(rest == null) return false;
