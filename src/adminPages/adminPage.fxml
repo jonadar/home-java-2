@@ -26,6 +26,9 @@
             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#load" prefWidth="250.0" text="load data" />
          </children>
       </VBox>
-      <Button contentDisplay="CENTER" layoutX="258.0" layoutY="381.0" mnemonicParsing="false" onAction="#logout" text="exit" />
+      <Button contentDisplay="CENTER" layoutX="258.0" layoutY="381.0" mnemonicParsing="false" onAction="#logout" text="exit">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

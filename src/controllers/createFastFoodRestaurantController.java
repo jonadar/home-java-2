@@ -49,5 +49,8 @@ public class createFastFoodRestaurantController {
     	}
 
     }
-
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
+    }
 }
