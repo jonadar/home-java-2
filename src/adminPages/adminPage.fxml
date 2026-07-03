@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="421.0" prefWidth="318.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26">
+<AnchorPane prefHeight="421.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPageController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="318.0" text="admin" textAlignment="CENTER">
          <font>
@@ -17,16 +16,16 @@
       <Label layoutX="14.0" layoutY="-202.0" text="Label" />
       <VBox layoutX="34.0" layoutY="46.0" spacing="15.0">
          <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Customer management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="Restaurant management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="Order management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="Courier management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="Restaurant Manager Management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="reports and sorting" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="save data" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" prefWidth="250.0" text="load data" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerManagement" prefHeight="25.0" prefWidth="250.0" text="Customer management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantManagment" prefWidth="250.0" text="Restaurant management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#orderManagment" prefWidth="250.0" text="Order management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#riderManangment" prefWidth="250.0" text="Rider management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantAdminManangment" prefWidth="250.0" text="Restaurant Admin Management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#reportsAndSorting" prefWidth="250.0" text="reports and sorting" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefWidth="250.0" text="save data" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#load" prefWidth="250.0" text="load data" />
          </children>
       </VBox>
-      <Button contentDisplay="CENTER" layoutX="258.0" layoutY="381.0" mnemonicParsing="false" text="exit" />
+      <Button contentDisplay="CENTER" layoutX="258.0" layoutY="381.0" mnemonicParsing="false" onAction="#logout" text="exit" />
    </children>
 </AnchorPane>
