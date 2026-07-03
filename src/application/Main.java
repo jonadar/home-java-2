@@ -1,7 +1,9 @@
 package application;
 	
+import java.io.IOException;
 import java.util.Stack;
 
+import Utils.ConsolePrinter;
 import homework2.Customer;
 import homework2.DeliveryDataBase;
 import homework2.FastFoodRestaurant;
@@ -47,6 +49,20 @@ public class Main extends Application {
 	public static void setScene(Scene scene) {
 		stage.setScene(scene);
 		sceneStack.push(scene);
+	}
+	
+	public static void setScene(String path) {
+		try{			
+			Parent root = FXMLLoader.load(Main.class.getResource(path));
+			
+			Scene scene = new Scene(root);
+			
+			setScene(scene);
+		} catch (IOException e) {
+			ConsolePrinter.printError("could not find view file " + path);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
 	}
 	
 	public static void goBackScene() {

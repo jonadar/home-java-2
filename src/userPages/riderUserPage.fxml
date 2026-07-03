@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="325.0" prefWidth="293.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26">
+<AnchorPane prefHeight="720.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RiderUserPageController">
    <children>
-      <Button layoutX="217.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
-      <VBox layoutX="59.0" layoutY="25.0" prefHeight="218.0" prefWidth="174.0" spacing="10.0">
+      <Button layoutX="1035.0" layoutY="409.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
+      <VBox layoutX="936.0" layoutY="32.0" prefHeight="218.0" prefWidth="174.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="view orders" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="view active order" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="update order on the way" />
+            <Button mnemonicParsing="false" onAction="#viewAllOrders" prefHeight="26.0" prefWidth="242.0" text="view orders" />
+            <Button mnemonicParsing="false" onAction="#viewActiveOrder" prefHeight="26.0" prefWidth="242.0" text="view active order" />
+            <Button mnemonicParsing="false" onAction="#updateDeliveryStatus" prefHeight="26.0" prefWidth="242.0" text="update order on the way" />
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="update order delivered" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="view order history" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="view number of deliveries" />
+            <Button mnemonicParsing="false" onAction="#viewOrderHistory" prefHeight="26.0" prefWidth="242.0" text="view order history" />
+            <Button mnemonicParsing="false" onAction="#numberOfDeliveries" prefHeight="26.0" prefWidth="174.0" text="view number of deliveries" />
          </children>
       </VBox>
+      <TableView fx:id="tblAllOrders" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="533.0">
+         <columns>
+            <TableColumn fx:id="codeCol" prefWidth="50.00003433227539" text="code" />
+            <TableColumn fx:id="customerCol" prefWidth="75.0" text="customer" />
+            <TableColumn fx:id="resturantCol" prefWidth="73.99996185302734" text="resturant" />
+            <TableColumn fx:id="priceCol" prefWidth="75.33331298828125" text="price" />
+            <TableColumn fx:id="orderDateCol" prefWidth="75.0" text="orderDate" />
+            <TableColumn fx:id="deliveryDateCol" prefWidth="98.44439697265625" text="deliveryDate" />
+            <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="82.0" text="status" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
