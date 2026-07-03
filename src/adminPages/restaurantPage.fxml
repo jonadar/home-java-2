@@ -16,50 +16,50 @@
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="551.0" layoutY="14.0" maxWidth="200.0" prefHeight="67.0" prefWidth="199.0" spacing="5.0">
+      <VBox layoutX="551.0" layoutY="14.0" maxWidth="200.0" prefHeight="99.0" prefWidth="199.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Restaurants" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Open Restaurants" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showAllRestaurants" prefWidth="200.0" text="Show All Restaurants" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showOpenRestaurants" prefWidth="200.0" text="Show Open Restaurants" textAlignment="CENTER" />
          </children>
       </VBox>
       <Button layoutX="687.0" layoutY="511.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <TableView layoutX="27.0" layoutY="84.0" prefHeight="319.0" prefWidth="453.0">
+      <TableView fx:id="resTbl" layoutX="27.0" layoutY="84.0" prefHeight="319.0" prefWidth="453.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="code" />
-          <TableColumn prefWidth="75.0" text="name" />
-            <TableColumn prefWidth="75.0" text="isOpen" />
-            <TableColumn prefWidth="75.0" text="kitchenType" />
-            <TableColumn prefWidth="75.0" text="rating" />
-            <TableColumn prefWidth="75.0" text="deliveryFee" />
+          <TableColumn fx:id="codeCol" prefWidth="75.0" text="code" />
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
+            <TableColumn fx:id="isOpenCol" prefWidth="75.0" text="isOpen" />
+            <TableColumn fx:id="typeCol" prefWidth="75.0" text="kitchenType" />
+            <TableColumn fx:id="ratingCol" prefWidth="75.0" text="rating" />
+            <TableColumn fx:id="feeCol" prefWidth="75.0" text="deliveryFee" />
         </columns>
       </TableView>
       <VBox layoutX="551.0" layoutY="228.0" prefHeight="60.0" prefWidth="199.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Restaurant by Code" textAlignment="CENTER" />
-            <TextField />
+            <Button mnemonicParsing="false" onAction="#searchRes" prefWidth="200.0" text="Search Restaurant by Code" textAlignment="CENTER" />
+            <TextField fx:id="searchResText" />
          </children>
       </VBox>
-      <VBox layoutX="551.0" layoutY="131.0" prefHeight="86.0" prefWidth="199.0">
+      <VBox layoutX="554.0" layoutY="109.0" prefHeight="86.0" prefWidth="199.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Open Restaurant" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Close Restaurant" textAlignment="CENTER" />
-            <TextField />
+            <Button mnemonicParsing="false" onAction="#openRest" prefWidth="200.0" text="Open Restaurant" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#closeRest" prefWidth="200.0" text="Close Restaurant" textAlignment="CENTER" />
+            <TextField fx:id="opnClosRestText" />
          </children>
       </VBox>
       <VBox layoutX="551.0" layoutY="307.0" prefHeight="67.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Update Restaurant Rating" textAlignment="CENTER" />
-            <TextField />
+            <Button mnemonicParsing="false" onAction="#updetRating" prefWidth="200.0" text="Update Restaurant Rating" textAlignment="CENTER" />
+            <TextField fx:id="updetRatingText" />
          </children>
       </VBox>
-      <Button layoutX="550.0" layoutY="84.0" mnemonicParsing="false" prefWidth="200.0" text="Add New Restaurant" textAlignment="CENTER" />
+      <Button layoutX="72.0" layoutY="434.0" mnemonicParsing="false" onAction="#addNewRestaurant" prefWidth="200.0" text="Add New Restaurant" textAlignment="CENTER" />
       <VBox layoutX="550.0" layoutY="389.0" prefHeight="60.0" prefWidth="199.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Restaurants by Type" textAlignment="CENTER" />
-            <TextField />
+            <Button mnemonicParsing="false" onAction="#resByType" prefWidth="200.0" text="Show Restaurants by Type" textAlignment="CENTER" />
+            <TextField fx:id="resByTypeText" />
          </children>
       </VBox>
    </children>

@@ -59,7 +59,6 @@ public class RestAdminController {
 			tblAllRestAdmin.setItems(FXCollections.observableArrayList(restAdmin));
     	} catch (Exception e) {
 			ConsolePrinter.printError(e);
-
     	}
     }
 

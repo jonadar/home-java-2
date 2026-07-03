@@ -27,20 +27,14 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <VBox layoutX="28.0" layoutY="406.0" prefHeight="80.0" prefWidth="270.0">
-         <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#AddMoney" prefHeight="25.0" prefWidth="273.0" text="Add money to a customer's balance" />
-            <Button mnemonicParsing="false" onAction="#withdrawingMoney" prefHeight="25.0" prefWidth="273.0" text="Withdrawing money from a customer's balance" />
-            <TextField fx:id="moneyText" prefHeight="25.0" prefWidth="261.0" />
-         </children>
-      </VBox>
+      <VBox layoutX="28.0" layoutY="406.0" prefHeight="80.0" prefWidth="270.0" />
       <VBox layoutX="29.0" layoutY="190.0" prefHeight="167.0" prefWidth="341.0" style="-fx-border-color: black;">
          <children>
             <Button mnemonicParsing="false" onAction="#viewOrdersOfCustomer" prefHeight="25.0" prefWidth="344.0" text="View all orders of a customer" />
             <TextField fx:id="viewOrdersOfCustomerText" />
             <TableView fx:id="ordersOfCustomerTbl" prefHeight="106.0" prefWidth="358.0">
               <columns>
-                <TableColumn fx:id="tbl3nameCol" prefWidth="117.33331298828125" text="restaurant name" />
+                <TableColumn fx:id="tbl3nameCol" prefWidth="117.33331298828125" text="restaurant" />
                 <TableColumn fx:id="tbl3priceCol" prefWidth="68.6666259765625" text="price" />
                   <TableColumn fx:id="tbl3priceCol" prefWidth="81.3333740234375" text="date" />
                   <TableColumn fx:id="tbl3statusCol" prefWidth="65.33331298828125" text="status" />
@@ -94,7 +88,6 @@
               <columns>
                 <TableColumn fx:id="restColcode" prefWidth="105.9999942779541" text="restaurant code" />
                 <TableColumn fx:id="restColname" prefWidth="110.6666259765625" text="restaurant name" />
-                  <TableColumn fx:id="restColprice" minWidth="1.3333740234375" prefWidth="62.666656494140625" text="price" />
               </columns>
             </TableView>
          </children>
