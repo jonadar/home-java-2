@@ -18,42 +18,42 @@
       </Label>
       <VBox layoutX="516.0" layoutY="25.0" maxWidth="200.0" prefHeight="143.0" prefWidth="199.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show All Riders" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Add New Rider" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Update Order Status" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Show Rider with Most Deliveries" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showAllRiders" prefWidth="200.0" text="Show All Riders" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#addNewRider" prefWidth="200.0" text="Add New Rider" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#updateOrderStatus" prefWidth="200.0" text="Update Order Status" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#showRiderwithMostDeliveries" prefWidth="200.0" text="Show Rider with Most Deliveries" textAlignment="CENTER" />
          </children>
       </VBox>
       <Button layoutX="652.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <TableView layoutX="26.0" layoutY="42.0" prefHeight="200.0" prefWidth="401.0">
+      <TableView fx:id="riderTbl" layoutX="26.0" layoutY="42.0" prefHeight="200.0" prefWidth="401.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="name" />
-          <TableColumn prefWidth="91.99996185302734" text="phoneNumber" />
-            <TableColumn prefWidth="82.66671752929688" text="id" />
-            <TableColumn prefWidth="67.33331298828125" text="isAvailable" />
-            <TableColumn prefWidth="75.0" text="vehicle" />
+          <TableColumn fx:id="colname" prefWidth="75.0" text="name" />
+          <TableColumn fx:id="colphone" prefWidth="91.99996185302734" text="phoneNumber" />
+            <TableColumn fx:id="colid" prefWidth="82.66671752929688" text="id" />
+            <TableColumn fx:id="colAvailable" prefWidth="67.33331298828125" text="isAvailable" />
+            <TableColumn fx:id="colvehicle" prefWidth="75.0" text="vehicle" />
         </columns>
       </TableView>
       <VBox layoutX="28.0" layoutY="259.0" prefHeight="200.0" prefWidth="225.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="225.0" text="Show Rider Orders" textAlignment="CENTER" />
-            <TextField />
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <Button mnemonicParsing="false" onAction="#showRiderOrders" prefHeight="25.0" prefWidth="225.0" text="Show Rider Orders" textAlignment="CENTER" />
+            <TextField fx:id="showRiderOrdersText" />
+            <TableView fx:id="ordersTbl" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="date" />
-                <TableColumn prefWidth="75.0" text="status" />
-                  <TableColumn prefWidth="75.0" text="restaurant" />
+                <TableColumn fx:id="col2date" prefWidth="75.0" text="date" />
+                <TableColumn fx:id="col2status" prefWidth="75.0" text="status" />
+                  <TableColumn fx:id="col2restaurant" prefWidth="75.0" text="restaurant" />
               </columns>
             </TableView>
          </children>
       </VBox>
       <VBox layoutX="274.0" layoutY="259.0" prefHeight="73.0" prefWidth="133.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="200.0" text="Search Rider" textAlignment="CENTER" />
-            <TextField />
+            <Button mnemonicParsing="false" onAction="#searchRider" prefWidth="200.0" text="Search Rider" textAlignment="CENTER" />
+            <TextField fx:id="searchRiderText" />
          </children>
       </VBox>
    </children>
