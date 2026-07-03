@@ -20,7 +20,6 @@
          <children>
             <Button mnemonicParsing="false" onAction="#showAllRestaurants" prefWidth="200.0" text="Show All Restaurants" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#showOpenRestaurants" prefWidth="200.0" text="Show Open Restaurants" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#updetRateing" prefHeight="25.0" prefWidth="201.0" text="updet rateing" />
          </children>
       </VBox>
       <Button layoutX="687.0" layoutY="511.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">

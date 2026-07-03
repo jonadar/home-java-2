@@ -57,7 +57,7 @@ public class restaurantPageController {
 
     @FXML
     void addNewRestaurant(ActionEvent event) {
-
+    	// to do
     }
 
     @FXML
@@ -123,7 +123,7 @@ public class restaurantPageController {
 
     @FXML
     void updetRating(ActionEvent event) {
-
+    	//to do
     }
 
     public void initialize() {
