@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="597.0" prefWidth="657.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26">
+<AnchorPane prefHeight="861.0" prefWidth="1132.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RestAdminUserPageController">
    <children>
-      <TableView layoutX="4.0" layoutY="332.0" prefHeight="266.0" prefWidth="641.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-        </columns>
-      </TableView>
-      <Button layoutX="568.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
-      <VBox layoutX="30.0" layoutY="24.0" prefHeight="280.0" prefWidth="206.0" spacing="10.0">
+      <Button layoutX="1022.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
+      <VBox layoutX="884.0" layoutY="51.0" prefHeight="280.0" prefWidth="206.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" text="add customer" />
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" text="create order" />
@@ -31,5 +23,36 @@
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" text="view restaurant report" />
          </children>
       </VBox>
+      <TableView fx:id="restaurantTable" layoutX="24.0" layoutY="421.0" prefHeight="379.0" prefWidth="722.0">
+         <columns>
+            <TableColumn fx:id="restCodeCol" prefWidth="102.66666412353516" text="restaurant code" />
+            <TableColumn fx:id="restNameCol" prefWidth="75.33333587646484" text="name" />
+            <TableColumn fx:id="kitchenTypeCol" prefWidth="107.66665649414062" text="kitchen type" />
+            <TableColumn fx:id="ratingCol" prefWidth="112.33334350585938" text="rating" />
+            <TableColumn fx:id="restOpenCol" prefWidth="96.0" text="open" />
+            <TableColumn fx:id="deliveryFeeCol" prefWidth="117.33331298828125" text="delivery fee" />
+         </columns>
+      </TableView>
+      <TableView fx:id="orderTable" layoutX="24.0" layoutY="51.0" prefHeight="312.0" prefWidth="722.0">
+         <columns>
+            <TableColumn fx:id="codeCol" prefWidth="77.0" text="code" />
+            <TableColumn fx:id="restaurantCol" prefWidth="99.0" text="restaurant" />
+            <TableColumn fx:id="riderCol" prefWidth="133.0" text="rider" />
+            <TableColumn fx:id="orderDateCol" prefWidth="96.0" text="order date" />
+            <TableColumn fx:id="deliveryDateCol" prefWidth="107.0" text="delivery date" />
+            <TableColumn fx:id="priceCol" prefWidth="87.0" text="price" />
+            <TableColumn fx:id="statusCol" prefWidth="108.0" text="status" />
+         </columns>
+      </TableView>
+      <Label layoutX="24.0" layoutY="16.0" text="My Orders">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="386.0" text="Restaurants">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

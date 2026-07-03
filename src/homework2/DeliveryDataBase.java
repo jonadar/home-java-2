@@ -140,6 +140,16 @@ public class DeliveryDataBase {
 		System.out.println("-----------------------------");
 	}
 	
+	// display all restaurant orders
+	public ArrayList<Order> getOrdersByRestaurantCode(int code) {
+		if(this.orders == null || this.orders.size() == 0) {
+			System.out.println("no orders to display");
+			return new ArrayList<Order>();
+		}
+		
+		return new ArrayList<>(this.orders.stream().filter(order -> order.getRestaurantCode() == code).collect(Collectors.toList()));
+	}
+	
 	// display all rider orders
 	public void displayAllOrders(Rider rider) {
 		ArrayList<Order> orders = rider.getOrders();

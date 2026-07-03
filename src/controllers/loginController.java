@@ -1,10 +1,11 @@
 package controllers;
 
 import MyExceptions.CustomerNotFoundException;
+import MyExceptions.RiderNotFoundException;
 import Utils.ConsolePrinter;
 import application.Main;
 import enums.UserType;
-import homework2.Customer;
+import homework2.RestAdmin;
 import homework2.Services;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,40 +75,54 @@ public class LoginController {
 					throw new Exception("username or password incorrect.");
 				}
 				
-				Parent root = FXMLLoader.load(getClass().getResource("/adminPages/adminPage.fxml"));
-				
-				Scene scene = new Scene(root);
-				
-				Main.setScene(scene);
+				Main.setScene("/adminPages/adminPage.fxml");
 			} catch (Exception e) {
 				ConsolePrinter.printError(e);
 			}
 			break;
-		case UserType.RestAdmin:				
+		case UserType.RestAdmin:
+			try {
+				String userName = field1.getText();
+				String pass = field2.getText();
+				
+				RestAdmin restaurantAdmin = Services.findRestAdmin(userName, Main.DDB.getRestaurantAdmins());
+				
+				if(restaurantAdmin.login(userName, pass) == false) {
+					throw new Exception("username or password incorrect.");
+				}
+				
+				RestAdminUserPageController.restaurantAdmin = restaurantAdmin;
+				
+				Main.setScene("/userPages/restAdminUserPage.fxml");
+			} catch (Exception e) {
+				ConsolePrinter.printError(e);
+			}
 			break;
 		case UserType.Customer:
 			try {
 				int code = Integer.parseInt(field1.getText());
 				
 				// find user and set in relevant controller
-				Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
+				CustomerUserPageController.customer = Services.findCustomer(code, Main.DDB.getCustomers());
 				
-				CustomerUserPageController.customer = customer;
-				
-				Parent root = FXMLLoader.load(getClass().getResource("/userPages/customerUserPage.fxml"));
-				
-				Scene scene = new Scene(root);
-				
-				Main.setScene(scene);
+				Main.setScene("/userPages/customerUserPage.fxml");
 			} catch (CustomerNotFoundException e) {
 				ConsolePrinter.printError("could not find user with that code");
 			} catch (NumberFormatException e) {
 				ConsolePrinter.printError("code must be valid integer");
-			} catch (Exception e) {
-				ConsolePrinter.printError(e);
 			}
 			break;
 		case UserType.Rider:
+			try {
+				String id = field1.getText();
+				
+				// find rider and set in relevant controller
+				RiderUserPageController.rider = Services.findRider(id, Main.DDB.getRiders());
+				
+				Main.setScene("/userPages/riderUserPage.fxml");
+			} catch (RiderNotFoundException e) {
+				ConsolePrinter.printError("could not find user with that id");
+			}
 			break;
     	}
     }
