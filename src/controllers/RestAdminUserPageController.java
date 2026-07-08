@@ -2,12 +2,14 @@ package controllers;
 
 import java.util.ArrayList;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
 import homework2.Order;
 import homework2.RestAdmin;
 import homework2.Restaurant;
+import homework2.Services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -76,6 +78,18 @@ public class RestAdminUserPageController {
     private TextField viewOrderText;
     
     @FXML
+    private TextField riderCodeText;
+    
+    @FXML
+    private TextField orderCodeText;
+
+    @FXML
+    private TextField uptresrateTextRate;
+
+    @FXML
+    private TextField uptresrateTextCode;
+    
+    @FXML
     void addCustomer(ActionEvent event) {
     	Main.setScene("/adminPages/createCustomer.fxml");
 
@@ -88,17 +102,45 @@ public class RestAdminUserPageController {
 
     @FXML
     void assignRiderToOrder(ActionEvent event) {
-
+    	try {
+    		Integer orderCode = Integer.parseInt(orderCodeText.getText());
+    		String riderId = riderCodeText.getText();
+    		for (Order o : Main.DDB.getOrders()) {
+    			if (o.getOrderCode() == orderCode && !o.getDeliveryStatus().equals("delivered")) {
+    				o.setDriverId(riderId);
+    			}
+				
+			}
+    	} catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);	
+    	}
     }
 
     @FXML
     void closeOrOpenRestaurant(ActionEvent event) {
-
+    	Restaurant selectedRes = restaurantTable.getSelectionModel().getSelectedItem();
+    	if (selectedRes != null) {
+    		selectedRes.setOpen(!selectedRes.isOpen()); // הופך את הסטטוס
+    	}
     }
 
     @FXML
     void updateRestaurantRating(ActionEvent event) {
-
+    	try {
+        	Integer code = Integer.parseInt(uptresrateTextCode.getText());
+        	Double rate = Double.parseDouble(uptresrateTextRate.getText());
+        	for (Restaurant r : restaurantAdmin.getRestaurants()) {
+        		if (r.getRestaurantCode() == code) {
+				r.setRating(rate);
+        		}
+			}
+    	} catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);	
+    	}
     }
 
     @FXML

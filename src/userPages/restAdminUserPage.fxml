@@ -45,11 +45,11 @@
          </font>
       </Label>
       <Button layoutX="859.0" layoutY="502.0" mnemonicParsing="false" onAction="#assignRiderToOrder" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="assign rider to order" />
-      <TextField layoutX="859.0" layoutY="529.0" prefHeight="25.0" prefWidth="108.0" />
-      <TextField layoutX="967.0" layoutY="529.0" prefHeight="25.0" prefWidth="98.0" />
+      <TextField fx:id="riderCodeText" layoutX="859.0" layoutY="529.0" prefHeight="25.0" prefWidth="108.0" promptText="rider code" />
+      <TextField fx:id="orderCodeText" layoutX="967.0" layoutY="529.0" prefHeight="25.0" prefWidth="98.0" promptText="order code" />
       <Button layoutX="857.0" layoutY="579.0" mnemonicParsing="false" onAction="#updateRestaurantRating" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="update restaurant rating" />
-      <TextField layoutX="857.0" layoutY="606.0" prefHeight="25.0" prefWidth="108.0" />
-      <TextField layoutX="965.0" layoutY="606.0" prefHeight="25.0" prefWidth="98.0" />
+      <TextField fx:id="uptresrateTextCode" layoutX="857.0" layoutY="606.0" prefHeight="25.0" prefWidth="108.0" promptText="code" />
+      <TextField fx:id="uptresrateTextRate" layoutX="965.0" layoutY="606.0" prefHeight="25.0" prefWidth="98.0" promptText="rateing" />
       <Button layoutX="856.0" layoutY="643.0" mnemonicParsing="false" onAction="#closeOrOpenRestaurant" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="close or open restaurant" />
       <TextField layoutX="856.0" layoutY="670.0" prefHeight="25.0" prefWidth="108.0" />
       <TextField layoutX="964.0" layoutY="670.0" prefHeight="25.0" prefWidth="98.0" />
@@ -65,7 +65,7 @@
                   <Insets top="8.0" />
                </VBox.margin>
             </Button>
-            <TextField prefHeight="25.0" prefWidth="206.0">
+            <TextField fx:id="viewOrderText" prefHeight="25.0" prefWidth="206.0">
                <VBox.margin>
                   <Insets top="8.0" />
                </VBox.margin>
@@ -80,7 +80,7 @@
                   <Insets top="8.0" />
                </VBox.margin>
             </Button>
-            <TextField prefHeight="25.0" prefWidth="206.0">
+            <TextField fx:id="viewOpenResByKText" prefHeight="25.0" prefWidth="206.0">
                <VBox.margin>
                   <Insets top="8.0" />
                </VBox.margin>
