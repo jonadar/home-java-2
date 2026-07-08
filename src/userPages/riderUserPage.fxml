@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RiderUserPageController">
+<AnchorPane prefHeight="420.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RiderUserPageController">
    <children>
-      <Button layoutX="1035.0" layoutY="409.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
-      <VBox layoutX="936.0" layoutY="32.0" prefHeight="218.0" prefWidth="174.0" spacing="10.0">
+      <Button layoutX="668.0" layoutY="332.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
+      <VBox layoutX="612.0" layoutY="93.0" prefHeight="218.0" prefWidth="174.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#viewAllOrders" prefHeight="26.0" prefWidth="242.0" text="view orders" />
             <Button mnemonicParsing="false" onAction="#viewActiveOrder" prefHeight="26.0" prefWidth="242.0" text="view active order" />
@@ -19,7 +21,7 @@
             <Button mnemonicParsing="false" onAction="#numberOfDeliveries" prefHeight="26.0" prefWidth="174.0" text="view number of deliveries" />
          </children>
       </VBox>
-      <TableView fx:id="tblAllOrders" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="533.0">
+      <TableView fx:id="tblAllOrders" layoutX="14.0" layoutY="72.0" prefHeight="305.0" prefWidth="533.0">
          <columns>
             <TableColumn fx:id="codeCol" prefWidth="50.00003433227539" text="code" />
             <TableColumn fx:id="customerCol" prefWidth="75.0" text="customer" />
@@ -30,5 +32,10 @@
             <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="82.0" text="status" />
          </columns>
       </TableView>
+      <Label layoutX="147.0" layoutY="19.0" text="rider user screen">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
