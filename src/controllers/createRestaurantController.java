@@ -1,4 +1,5 @@
 package controllers;
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Restaurant;
@@ -31,9 +32,12 @@ public class createRestaurantController {
         	Boolean isOpen = Boolean.parseBoolean(isOpenText.getText());
         	Restaurant res = new Restaurant(nameText.getText(), kitchenTypeText.getText(), rating, isOpen,  deliveryFee);
         	Main.DDB.addRestaurant(res);
-    	} catch (Exception e) {
+    	}  catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
+
     	
     }
     

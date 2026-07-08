@@ -1,5 +1,7 @@
 package controllers;
 
+import MyExceptions.InvalidPropertyException;
+import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
 import javafx.event.ActionEvent;
@@ -16,12 +18,20 @@ public class updetUserInfoPage {
 
     @FXML
     void adress(ActionEvent event) {
-    	CustomerUserPageController.customer.setAddress(text.getText());
+    	try {
+			CustomerUserPageController.customer.setAddress(text.getText());
+		}  catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		}
     }
 
     @FXML
     void email(ActionEvent event) {
-    	CustomerUserPageController.customer.setEmail(text.getText());
+    	try {
+			CustomerUserPageController.customer.setEmail(text.getText());
+		} catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		}
     }
 
     @FXML
@@ -31,8 +41,11 @@ public class updetUserInfoPage {
 
     @FXML
     void phonNum(ActionEvent event) {
-    	CustomerUserPageController.customer.setPhoneNumber(text.getText());
-
+    	try {
+			CustomerUserPageController.customer.setPhoneNumber(text.getText());
+		}  catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		}
     }
 
 

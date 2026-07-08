@@ -74,6 +74,7 @@ public class customerPageController {
 
     @FXML
     void addNewcustomer(ActionEvent event) {
+    	Main.setScene("/adminPages/createCustomer.fxml");
 
     }
 
@@ -130,7 +131,8 @@ public class customerPageController {
 
     @FXML
     void updateCustomerDetails(ActionEvent event) {
-    	// to do
+    	Customer customer = CustomersTbl.getSelectionModel().getSelectedItem();
+
     }
 
     @FXML

@@ -57,9 +57,7 @@ public class restaurantPageController {
 
     @FXML
     void addNewRestaurant(ActionEvent event) {
-    	// to do
     	Main.setScene("/adminPages/chooseRes.fxml");
-    	System.out.println("go to rest page");
     }
 
     @FXML

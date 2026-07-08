@@ -6,27 +6,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="421.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPageController">
+<AnchorPane prefHeight="434.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPageController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="318.0" text="admin" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="318.0" text="Admin System Menegment" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="-202.0" text="Label" />
       <VBox layoutX="34.0" layoutY="46.0" spacing="15.0">
          <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerManagement" prefHeight="25.0" prefWidth="250.0" text="Customer management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantManagment" prefWidth="250.0" text="Restaurant management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#orderManagment" prefWidth="250.0" text="Order management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#riderManangment" prefWidth="250.0" text="Rider management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantAdminManangment" prefWidth="250.0" text="Restaurant Admin Management" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#reportsAndSorting" prefWidth="250.0" text="reports and sorting" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefWidth="250.0" text="save data" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#load" prefWidth="250.0" text="load data" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerManagement" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Customer management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantManagment" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Restaurant management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#orderManagment" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Order management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#riderManangment" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Rider management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#restaurantAdminManangment" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Restaurant Admin Management" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#reportsAndSorting" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="reports and sorting" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="save data" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#load" prefWidth="250.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="load data" />
          </children>
       </VBox>
-      <Button contentDisplay="CENTER" layoutX="258.0" layoutY="381.0" mnemonicParsing="false" onAction="#logout" text="exit">
+      <Button contentDisplay="CENTER" layoutX="262.0" layoutY="390.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: red;" text="exit">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

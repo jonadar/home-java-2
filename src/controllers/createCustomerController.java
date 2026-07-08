@@ -1,6 +1,7 @@
 package controllers;
 
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
@@ -37,9 +38,12 @@ public class createCustomerController {
     		Double remainingCredit = Double.parseDouble(remainingCreditText.getText());
         	Customer customer = new Customer(firstNameText.getText(), lastNameText.getText(), address.getText(), phoneNumberText.getText(), emailText.getText(), remainingCredit);
         	Main.DDB.addCustomer(customer);
-    	} catch (Exception e) {
+    	}  catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
+
 
     }
 

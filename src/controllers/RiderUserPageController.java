@@ -1,5 +1,6 @@
 package controllers;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Order;
@@ -61,7 +62,11 @@ public class RiderUserPageController {
     void updateDeliveryStatus(ActionEvent event) {
     	Order selectedOrder = tblAllOrders.getSelectionModel().getSelectedItem();
     	if (selectedOrder != null) {
-    		selectedOrder.setDeliveryStatus("on the way");
+    		try {
+				selectedOrder.setDeliveryStatus("on the way");
+			} catch (InvalidPropertyException e) {
+				ConsolePrinter.printError(e);
+			}
     	}
     }
 
@@ -80,7 +85,11 @@ public class RiderUserPageController {
     void updateOrderDelivered(ActionEvent event) {
     	Order selectedOrder = tblAllOrders.getSelectionModel().getSelectedItem();
     	if (selectedOrder != null) {
-    		selectedOrder.setDeliveryStatus("delivered");
+    		try {
+				selectedOrder.setDeliveryStatus("delivered");
+			}  catch (InvalidPropertyException e) {
+				ConsolePrinter.printError(e);
+			}
     	}
     }
     

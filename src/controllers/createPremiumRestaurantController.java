@@ -1,6 +1,7 @@
 package controllers;
 
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.PremiumRestaurant;
@@ -43,9 +44,12 @@ public class createPremiumRestaurantController {
         	Boolean isOpen = Boolean.parseBoolean(isOpenText.getText());
         	PremiumRestaurant res = new PremiumRestaurant(nameText.getText(), kitchenTypeText.getText(), rating, isOpen, deliveryFee, minOrderValue,orderFeePercentage);
         	Main.DDB.addRestaurant(res);
-    	} catch (Exception e) {
+    	}  catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
+
     }
 
     @FXML

@@ -13,12 +13,12 @@
       <Button layoutX="668.0" layoutY="332.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: red;" text="logout" textFill="WHITE" />
       <VBox layoutX="612.0" layoutY="93.0" prefHeight="218.0" prefWidth="174.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#viewAllOrders" prefHeight="26.0" prefWidth="242.0" text="view orders" />
-            <Button mnemonicParsing="false" onAction="#viewActiveOrder" prefHeight="26.0" prefWidth="242.0" text="view active order" />
-            <Button mnemonicParsing="false" onAction="#updateDeliveryStatus" prefHeight="26.0" prefWidth="242.0" text="update order on the way" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="242.0" text="update order delivered" />
-            <Button mnemonicParsing="false" onAction="#viewOrderHistory" prefHeight="26.0" prefWidth="242.0" text="view order history" />
-            <Button mnemonicParsing="false" onAction="#numberOfDeliveries" prefHeight="26.0" prefWidth="174.0" text="view number of deliveries" />
+            <Button mnemonicParsing="false" onAction="#viewAllOrders" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view orders" />
+            <Button mnemonicParsing="false" onAction="#viewActiveOrder" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view active order" />
+            <Button mnemonicParsing="false" onAction="#updateDeliveryStatus" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="update order on the way" />
+            <Button mnemonicParsing="false" onAction="#updateOrderDelivered" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="update order delivered" />
+            <Button mnemonicParsing="false" onAction="#viewOrderHistory" prefHeight="26.0" prefWidth="242.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view order history" />
+            <Button mnemonicParsing="false" onAction="#numberOfDeliveries" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view number of deliveries" />
          </children>
       </VBox>
       <TableView fx:id="tblAllOrders" layoutX="14.0" layoutY="72.0" prefHeight="305.0" prefWidth="533.0">
@@ -32,7 +32,7 @@
             <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="82.0" text="status" />
          </columns>
       </TableView>
-      <Label layoutX="147.0" layoutY="19.0" text="rider user screen">
+      <Label layoutX="147.0" layoutY="19.0" text="Rider User Screen">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="36.0" />
          </font>

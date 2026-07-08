@@ -1,6 +1,7 @@
 package controllers;
 
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.FastFoodRestaurant;
@@ -44,7 +45,10 @@ public class createFastFoodRestaurantController {
         	Boolean isOpen = Boolean.parseBoolean(isOpenText.getText());
         	FastFoodRestaurant res = new FastFoodRestaurant(nameText.getText(), kitchenTypeText.getText(), rating, isOpen,  deliveryFee, averageCookTime, fastDeliveryFee);
         	Main.DDB.addRestaurant(res);
-    	} catch (Exception e) {
+    	} 
+	     catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
 

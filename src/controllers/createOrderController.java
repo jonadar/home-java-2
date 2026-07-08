@@ -1,5 +1,6 @@
 package controllers;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Order;
@@ -31,9 +32,13 @@ public class createOrderController {
         	Restaurant res = Services.findRestaurant(resCode, Main.DDB.getRestaurants());
         	Double price = Double.parseDouble(basePrice.getText());
         	Order order = new Order(Code, res, price, orderDate.getText());
-    	} catch (Exception e) {
+        	Main.DDB.addOrder(order);
+    	}  catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
-		}
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+    	}
+
     }
     @FXML
     void exit(ActionEvent event) {

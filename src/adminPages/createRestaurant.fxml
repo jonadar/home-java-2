@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -7,21 +8,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="374.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.createRestaurantController">
+<AnchorPane prefHeight="413.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.createRestaurantController">
    <children>
       <VBox layoutX="57.0" layoutY="54.0" prefHeight="294.0" prefWidth="224.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="241.0" text="name" />
-            <TextField fx:id="nameText" />
-            <Label prefHeight="17.0" prefWidth="229.0" text="kitchenType" />
-            <TextField fx:id="kitchenTypeText" />
-            <Label prefHeight="17.0" prefWidth="226.0" text="rating" />
-            <TextField fx:id="ratingText" />
-            <Label text="isOpen" />
-            <TextField fx:id="isOpenText" />
-            <Label prefHeight="17.0" prefWidth="243.0" text="deliveryFee" />
-            <TextField fx:id="deliveryFeeText" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="229.0" text="create" textAlignment="CENTER" />
+            <Label prefHeight="17.0" prefWidth="241.0" text="name">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="nameText">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Label prefHeight="17.0" prefWidth="229.0" text="kitchenType">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="kitchenTypeText">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Label prefHeight="17.0" prefWidth="226.0" text="rating">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="ratingText">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Label text="isOpen">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="isOpenText">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Label prefHeight="17.0" prefWidth="243.0" text="deliveryFee">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="deliveryFeeText">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></TextField>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="229.0" style="-fx-background-color: #74fbdb; -fx-border-color: #74b5fb;" text="create" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
       <Label alignment="CENTER" layoutX="77.0" layoutY="14.0" prefHeight="39.0" prefWidth="195.0" text="create new Restaurant">
@@ -29,7 +63,7 @@
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="293.0" layoutY="333.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: red;" text="exit">
+      <Button layoutX="281.0" layoutY="369.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: red;" text="exit">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
