@@ -97,7 +97,8 @@ public class CustomerUserPageController {
 
     @FXML
     void createOrder(ActionEvent event) {
-    	// TODO
+    	Main.setScene("/userPages/createOrder.fxml");
+
     }
 
     @FXML
@@ -121,7 +122,8 @@ public class CustomerUserPageController {
 
     @FXML
     void updatePersonalInfo(ActionEvent event) {
-    	//TODO
+    	Main.setScene("/userPages/updetUserInfoPage.fxml");
+
     }
 
     @FXML
