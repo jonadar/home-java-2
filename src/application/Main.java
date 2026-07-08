@@ -29,20 +29,15 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		
-		try {
-			SaveManager.load(DDB);
-			
-			Parent root = FXMLLoader.load(getClass().getResource("/application/loginPage.fxml"));
-			
-			Scene scene = new Scene(root);
-			
-			setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+		SaveManager.load(DDB);
 //		SaveManager.save(DDB);
+		
+		setScene("/application/loginPage.fxml");
+//		setScene("/adminPages/chooseRes.fxml");
+
+		primaryStage.show();
+		
+
 		
 	}
 	

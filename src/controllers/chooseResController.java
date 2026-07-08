@@ -8,20 +8,18 @@ import javafx.fxml.FXML;
 public class chooseResController {
 
     @FXML
-    void FastFoodRestaurant(ActionEvent event) {
+    void fastFoodRestaurant(ActionEvent event) {
     	Main.setScene("/adminPages/createFastFoodRestaurant.fxml");
     }
 
     @FXML
-    void PremiumRestaurant(ActionEvent event) {
+    void premiumRestaurant(ActionEvent event) {
     	Main.setScene("/adminPages/createPremiumRestaurant.fxml");
-
     }
 
     @FXML
-    void Restaurant(ActionEvent event) {
+    void restaurant(ActionEvent event) {
     	Main.setScene("/adminPages/createRestaurant.fxml");
-
     }
 
     @FXML

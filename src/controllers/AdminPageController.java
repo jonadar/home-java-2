@@ -1,15 +1,11 @@
 package controllers;
 
-import java.io.IOException;
-
 import Utils.ConsolePrinter;
 import Utils.SaveManager;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 
 public class AdminPageController {
 
@@ -57,8 +53,5 @@ public class AdminPageController {
     @FXML
     void load(ActionEvent event) {
     	SaveManager.load(Main.DDB);
-
     }
-    
-    
 }

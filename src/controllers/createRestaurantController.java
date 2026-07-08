@@ -36,5 +36,9 @@ public class createRestaurantController {
     	}
     	
     }
-
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
+    }
 }

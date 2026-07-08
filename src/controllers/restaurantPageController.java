@@ -58,6 +58,8 @@ public class restaurantPageController {
     @FXML
     void addNewRestaurant(ActionEvent event) {
     	// to do
+    	Main.setScene("/adminPages/chooseRes.fxml");
+    	System.out.println("go to rest page");
     }
 
     @FXML
@@ -117,13 +119,16 @@ public class restaurantPageController {
     	//restaurants.stream().filter(Restaurant::isOpen).collect(Collectors.toList());
     	ObservableList<Restaurant> restaurantslist = FXCollections.observableArrayList(restaurants.stream().filter(Restaurant::isOpen).collect(Collectors.toList()));
     	resTbl.setItems(restaurantslist);
-
     }
-
 
     @FXML
     void updetRating(ActionEvent event) {
     	//to do
+    }
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
     }
 
     public void initialize() {

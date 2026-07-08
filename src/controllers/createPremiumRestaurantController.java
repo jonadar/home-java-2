@@ -48,4 +48,8 @@ public class createPremiumRestaurantController {
     	}
     }
 
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
+    }
 }
