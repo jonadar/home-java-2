@@ -1,6 +1,7 @@
 package controllers;
 
 
+import MyExceptions.InvalidPropertyException;
 import MyExceptions.RiderNotFoundException;
 import Utils.ConsolePrinter;
 import application.Main;
@@ -90,12 +91,30 @@ public class riderPageController {
 
     @FXML
     void showRiderwithMostDeliveries(ActionEvent event) {
-
+    	try {
+    		Rider rider = Main.DDB.riderWithMostOrders();
+        	if (rider != null) {
+        		riderTbl.setItems(FXCollections.observableArrayList(rider));
+        	}
+        }catch (Exception e) {
+    		ConsolePrinter.printError(e);
+        }
+    	
+    	
     }
 
     @FXML
     void updateOrderStatus(ActionEvent event) {
     	// to do
+    	Order selectedOrder = ordersTbl.getSelectionModel().getSelectedItem();
+    	if (selectedOrder != null) {
+    		try {
+				selectedOrder.setDeliveryStatus("delivered");
+			} catch (InvalidPropertyException e) {
+				ConsolePrinter.printError(e);
+			}
+    	}
+
     }
     
     // to do
