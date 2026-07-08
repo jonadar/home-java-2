@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import MyExceptions.InvalidPropertyException;
 import MyExceptions.RestaurantNotFoundException;
 import homework2.Customer;
 import homework2.DeliveryDataBase;
@@ -44,7 +45,7 @@ public class SaveManager {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/customers.txt"));
 			for (Customer c : customers) {
-				writer.write(c.getfirstName() + ";" + c.getLastName()+ ";" + c.getAddress()+ ";" + c.getPhoneNumber()+ ";" + c.getEmail()+ ";" + c.getRemainingCredit());
+				writer.write(c.getFirstName() + ";" + c.getLastName()+ ";" + c.getAddress()+ ";" + c.getPhoneNumber()+ ";" + c.getEmail()+ ";" + c.getRemainingCredit());
 				writer.newLine();
 			}
 			writer.close();
@@ -143,8 +144,12 @@ public class SaveManager {
 					String email = st.nextToken();
 					Double balance = Double.parseDouble(st.nextToken());
 					
-					Customer customer = new Customer(fname, lname, address, phone, email, balance);
-					DDB.addCustomer(customer);
+					try {						
+						Customer customer = new Customer(fname, lname, address, phone, email, balance);
+						DDB.addCustomer(customer);
+					} catch (InvalidPropertyException e) {
+						ConsolePrinter.printError(e);
+					}
 				}
 			}
 			
@@ -185,6 +190,8 @@ public class SaveManager {
 						DDB.addOrder(order);
 					} catch (RestaurantNotFoundException e) {
 						ConsolePrinter.printError(e);
+					} catch (InvalidPropertyException e) {
+						ConsolePrinter.printError(e);
 					}
 					
 				}
@@ -211,8 +218,12 @@ public class SaveManager {
 					String vehicle = st.nextToken();
 					boolean available = Boolean.parseBoolean(st.nextToken());
 					
-					Rider rider = new Rider(id, name, phone, vehicle, available);
-					DDB.addRider(rider);
+					try {						
+						Rider rider = new Rider(id, name, phone, vehicle, available);
+						DDB.addRider(rider);
+					} catch (InvalidPropertyException e) {
+						ConsolePrinter.printError(e);
+					}
 				}
 			}
 			
@@ -239,16 +250,19 @@ public class SaveManager {
 					double fee = Double.parseDouble(st.nextToken());
 					
 					Restaurant rest;
-					
-					if(restaurantType.equals("Fst") && st.countTokens() == 2) {
-						rest = new FastFoodRestaurant(name, kitchenType, rating, open, fee, Double.parseDouble(st.nextToken()), Double.parseDouble(st.nextToken()));
-					} else if (restaurantType.equals("Prm") && st.countTokens() == 2) {
-						rest = new PremiumRestaurant(name, kitchenType, rating, open, fee, Double.parseDouble(st.nextToken()), Double.parseDouble(st.nextToken()));
-					} else {
-						rest = new Restaurant(name, kitchenType, rating, open, fee);
+					try {
+						if(restaurantType.equals("Fst") && st.countTokens() == 2) {
+							rest = new FastFoodRestaurant(name, kitchenType, rating, open, fee, Double.parseDouble(st.nextToken()), Double.parseDouble(st.nextToken()));
+						} else if (restaurantType.equals("Prm") && st.countTokens() == 2) {
+							rest = new PremiumRestaurant(name, kitchenType, rating, open, fee, Double.parseDouble(st.nextToken()), Double.parseDouble(st.nextToken()));
+						} else {
+							rest = new Restaurant(name, kitchenType, rating, open, fee);
+						}
+						
+						DDB.addRestaurant(rest);
+					} catch (InvalidPropertyException e) {
+						ConsolePrinter.printError(e);
 					}
-					
-					DDB.addRestaurant(rest);
 				}
 			}
 			
@@ -270,24 +284,27 @@ public class SaveManager {
 					String name = st.nextToken();
 					String username = st.nextToken();
 					String password = st.nextToken();
-				
-					RestAdmin restAdmin = new RestAdmin(name, username, password);
-					
-					if (st.countTokens() == 1) {
-						StringTokenizer codes = new StringTokenizer(st.nextToken(), "|");
+					try {
+						RestAdmin restAdmin = new RestAdmin(name, username, password);
 						
-						while(codes.hasMoreTokens()) {
-							try {	
-								int code = Integer.parseInt(codes.nextToken());
-								Restaurant rest = Services.findRestaurant(code, DDB.getRestaurants());
-								restAdmin.addRestaurant(rest);
-							} catch (Exception e) {
-								ConsolePrinter.printError(e);
+						if (st.countTokens() == 1) { // final token with assigned restaurant codes
+							StringTokenizer codes = new StringTokenizer(st.nextToken(), "|");
+							
+							while(codes.hasMoreTokens()) {
+								try {	
+									int code = Integer.parseInt(codes.nextToken());
+									Restaurant rest = Services.findRestaurant(code, DDB.getRestaurants());
+									restAdmin.addRestaurant(rest);
+								} catch (Exception e) {
+									ConsolePrinter.printError(e);
+								}
 							}
 						}
+						
+						DDB.addRestaurantAdmin(restAdmin);
+					} catch (InvalidPropertyException e) {
+						ConsolePrinter.printError(e);
 					}
-					
-					DDB.addRestaurantAdmin(restAdmin);
 				}
 			}
 			

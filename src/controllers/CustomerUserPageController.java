@@ -194,7 +194,7 @@ public class CustomerUserPageController {
         
         customerBalance.setText(customer.getRemainingCredit() + "");
         customerEmail.setText(customer.getEmail());
-        customerName.setText(customer.getfirstName() + " " + customer.getLastName());
+        customerName.setText(customer.getFirstName() + " " + customer.getLastName());
         customerPhone.setText(customer.getPhoneNumber());
     }
 

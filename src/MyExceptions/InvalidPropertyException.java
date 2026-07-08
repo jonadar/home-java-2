@@ -1,0 +1,7 @@
+package MyExceptions;
+
+public class InvalidPropertyException extends Exception {
+	public InvalidPropertyException(String message) {
+		super(message);
+	}
+}

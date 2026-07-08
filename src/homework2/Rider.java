@@ -3,6 +3,7 @@ package homework2;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.UserInput;
 import Utils.Validation;
 
@@ -16,12 +17,12 @@ public class Rider {
 	
 	public static final Predicate<Rider> checkAvailable = rider -> rider.getAvailable(); // using predicate as asked for in assignment
 	
-	public Rider(String id, String fullName, String phoneNumber, String vehicle, boolean isAvailable) {
-		this.id = id;
-		this.fullName = fullName;
-		this.phoneNumber = phoneNumber;
-		this.vehicle = vehicle;
-		this.isAvailable = isAvailable;
+	public Rider(String id, String fullName, String phoneNumber, String vehicle, boolean isAvailable) throws InvalidPropertyException {
+		setId(id);
+		setFullName(fullName);
+		setPhoneNumber(phoneNumber);
+		setVehicle(vehicle);
+		setAvailable(isAvailable);
 		this.orders = new ArrayList<Order>();
 		
 		System.out.println("rider with id: " + this.id + " has been created.");
@@ -34,39 +35,30 @@ public class Rider {
 	public ArrayList<Order> getOrders() { return orders; }
 	public boolean getAvailable() { return isAvailable; }
 
-	public void setId(String id) {
+	public void setId(String id) throws InvalidPropertyException{
 		if (Validation.isId(id)) this.id = id;
-		else System.out.println("invalid id");
+		else throw new InvalidPropertyException("invalid id, must be 9 digits");
 	}
 	
-	public void setFullName(String fullName) {
+	public void setFullName(String fullName) throws InvalidPropertyException{
 		if (Validation.isName(fullName)) this.fullName = fullName;
-		else System.out.println("invalid full name");
+		else throw new InvalidPropertyException("invalid full name, needs to be none empty chars and spaces");
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) throws InvalidPropertyException{
 		if (Validation.isPhoneNumber(phoneNumber)) this.phoneNumber = phoneNumber;
-		else System.out.println("invalid phone number");
+		else throw new InvalidPropertyException("invalid phone number, must be 10 digits");
 	}
 
-	public void setVehicle(String vehicle) {
+	public void setVehicle(String vehicle) throws InvalidPropertyException{
 		if (Validation.isName(vehicle)) this.vehicle = vehicle;
-		else System.out.println("invalid vehicle");
+		else throw new InvalidPropertyException("invalid vehicle, must be none empty chars and spaces");
 	}
 
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 
-//	public void setOrders(ArrayList<Order> orders) {
-//		if (orders == null) {
-//			System.out.println("cant set null orders");
-//			return;
-//		}
-//
-//		this.orders = orders;
-//	}
-	
 	public boolean addOrder(Order order) {
 		if(order == null) return false;
 		if(!Validation.validateNotInArray(order, this.orders)) {

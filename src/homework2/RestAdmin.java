@@ -2,13 +2,14 @@ package homework2;
 
 import java.util.ArrayList;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.UserInput;
 import Utils.Validation;
 
 public class RestAdmin extends Admin{
 	private ArrayList<Restaurant> restaurants;
 	
-	public RestAdmin(String name, String username, String password) {
+	public RestAdmin(String name, String username, String password) throws InvalidPropertyException{
 		super(name, username, password);
 		this.restaurants = new ArrayList<Restaurant>();
 		

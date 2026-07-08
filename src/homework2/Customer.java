@@ -1,5 +1,6 @@
 package homework2;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.UserInput;
 import Utils.Validation;
 
@@ -15,7 +16,7 @@ public class Customer implements Comparable<Customer> {
 	private static int customerCount = 1;
 	
 	public int getCustomerCode() { return customerCode; }
-	public String getfirstName() { return firstName; }
+	public String getFirstName() { return firstName; }
 	public String getLastName() { return lastName; }
 	public String getAddress() { return address; }
 	public String getPhoneNumber() { return phoneNumber; }
@@ -23,47 +24,46 @@ public class Customer implements Comparable<Customer> {
 	public double getRemainingCredit() { return remainingCredit; }
 
 	
-	public Customer(String firstName, String lastName, String address, String phoneNumber, String email, double remainingCredit) {
+	public Customer(String firstName, String lastName, String address, String phoneNumber, String email, double remainingCredit) throws InvalidPropertyException{
+		setFirstName(firstName);
+		setLastName(lastName);
+		setAddress(address);
+		setPhoneNumber(phoneNumber);
+		setEmail(email);
+		setRemainingCredit(remainingCredit);
 		this.customerCode = customerCount++;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.remainingCredit = remainingCredit;
 		
 		System.out.println("customer with code: " + this.customerCode + " has been created.");
 	}
 	
-	public void setfirstName(String firstName) {
+	public void setFirstName(String firstName) throws InvalidPropertyException {
 		if (Validation.isName(firstName)) this.firstName = firstName;
-		else System.out.println("inavlid first name");
+		else throw new InvalidPropertyException("inavlid first name must be not empty, not only spaces, letters and spaces only");
 	}
 	
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName) throws InvalidPropertyException {
 		if (Validation.isName(lastName)) this.lastName = lastName;
-		else System.out.println("invalid last name");
+		else throw new InvalidPropertyException("invalid last name must be not empty, not only spaces, letters and spaces only");
 	}
 	
-	public void setAddress(String address) {
+	public void setAddress(String address) throws InvalidPropertyException {
 		if (Validation.isAddress(address)) this.address = address;
-		else System.out.println("invalid adress");
+		else throw new InvalidPropertyException("invalid adress needs to be atleast 3 words, not blank and first word is a numbers and chars (street), and last word is numbers (mikud)");
 	}
 	
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) throws InvalidPropertyException {
 		if (Validation.isPhoneNumber(phoneNumber)) this.phoneNumber = phoneNumber;
-		else System.out.println("invalid phone number entered");
+		else throw new InvalidPropertyException("invalid phone number entered must be  not empty & 10 digits");
 	}
 	
-	public void setEmail(String email) {
+	public void setEmail(String email) throws InvalidPropertyException {
 		if (Validation.isEmail(email)) this.email = email;
-		else System.out.println("invalid email");
+		else throw new InvalidPropertyException("invalid email must contain atleast 1 '@' and only alphabetic chars and '.'");
 	}
 	
-	public void setRemainingCredit(double remainingCredit) {
-		boolean valid = Validation.validate(remainingCredit, "invalid remaining credit");
-		
-		if (valid) this.remainingCredit = remainingCredit;
+	public void setRemainingCredit(double remainingCredit) throws InvalidPropertyException{
+		if (Validation.validate(remainingCredit)) this.remainingCredit = remainingCredit;
+		else throw new InvalidPropertyException("invalid remaining credit, must be positive value");
 	}
 	
 	public void menu(DeliveryDataBase DDB) {

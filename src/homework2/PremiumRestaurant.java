@@ -1,5 +1,6 @@
 package homework2;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.Validation;
 
 public class PremiumRestaurant extends Restaurant {
@@ -10,28 +11,26 @@ public class PremiumRestaurant extends Restaurant {
 	public double getOrderFeePercentage() { return orderFeePercentage; }
 	
 	public PremiumRestaurant(String name, String kitchenType, double rating, boolean isOpen,
-			double deliveryFee, double minOrderValue, double orderFeePercentage) {
+			double deliveryFee, double minOrderValue, double orderFeePercentage) throws InvalidPropertyException{
 		super(name, kitchenType, rating, isOpen, deliveryFee);
-		this.minOrderValue = minOrderValue;
-		this.orderFeePercentage = orderFeePercentage;
+		setMinOrderValue(minOrderValue);
+		setOrderFeePercentage(orderFeePercentage);
 	}
 	
-	public PremiumRestaurant(String name, String kitchenType) {
+	public PremiumRestaurant(String name, String kitchenType) throws InvalidPropertyException{
 		super(name, kitchenType);
 		this.minOrderValue = 0;
 		this.orderFeePercentage = 0;
 	}
 	
-	public void setMinOrderValue(double minOrderValue) {
-		boolean valid = Validation.validate(minOrderValue, "invalid minOrderValue");
-		
-		if(valid) this.minOrderValue = minOrderValue;
+	public void setMinOrderValue(double minOrderValue) throws InvalidPropertyException{
+		if(Validation.validate(minOrderValue)) this.minOrderValue = minOrderValue;
+		else throw new InvalidPropertyException("invalid minOrderValue, must be positive value");
 	}
 	
-	public void setOrderFeePercentage(double orderFeePercentage) {
-		boolean valid = Validation.validate(orderFeePercentage, "invalid orderFeePercentage");
-		
-		if(valid) this.orderFeePercentage = orderFeePercentage;
+	public void setOrderFeePercentage(double orderFeePercentage) throws InvalidPropertyException {
+		if(Validation.validate(orderFeePercentage)) this.orderFeePercentage = orderFeePercentage;
+		else throw new InvalidPropertyException("invalid orderFeePercentage, must be positive value");
 	}
 	
 

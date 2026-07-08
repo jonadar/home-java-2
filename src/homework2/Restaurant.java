@@ -2,6 +2,7 @@ package homework2;
 
 import java.util.Comparator;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.Validation;
 
 public class Restaurant{
@@ -24,50 +25,48 @@ public class Restaurant{
 	public static Comparator<Restaurant> getComparator() { return comparator; }
 	
 	
-	public Restaurant(String name, String kitchenType, double rating, boolean isOpen,
-			double deliveryFee) {
+	public Restaurant(String name, String kitchenType, double rating, boolean isOpen, double deliveryFee) throws InvalidPropertyException {
+		setName(name);
+		setKitchenType(kitchenType);
+		setRating(rating);
+		setDeliveryFee(deliveryFee);
+		setOpen(isOpen);
 		this.restaurantCode = restaurantCount++;
-		this.name = name;
-		this.kitchenType = kitchenType;
-		this.rating = rating;
-		this.isOpen = isOpen;
-		this.deliveryFee = deliveryFee;
 	}
 	
-	public Restaurant(String name, String kitchenType) {
+	public Restaurant(String name, String kitchenType) throws InvalidPropertyException {
+		setName(name);
+		setKitchenType(kitchenType);
+		setRating(10);
+		setOpen(false);
+		setDeliveryFee(0);
 		this.restaurantCode = restaurantCount++;
-		this.name = name;
-		this.kitchenType = kitchenType;
-		this.rating = 10;
-		this.isOpen = false;
-		this.deliveryFee = 0;
 	}
 	
-	public void setName(String name) {
-		boolean valid = Validation.validate(name, "invalid restaurant name");
-		
-		if(valid) this.name = name;
+	public void setName(String name) throws InvalidPropertyException {
+		if(Validation.validate(name)) this.name = name;
+		else throw new InvalidPropertyException("invalid restaurant name");
 	}
 	
-	public void setKitchenType(String kitchenType) {
+	public void setKitchenType(String kitchenType) throws InvalidPropertyException {
 		if(Validation.isName(kitchenType)) this.kitchenType = kitchenType;
-		else System.out.println("invalid kitchen type");
+		else throw new InvalidPropertyException("invalid kitchen type");
 	}
 	
-	public void setRating(double rating) {
-		boolean valid = Validation.isNumberInRange(0, 10, rating, "rating");
-		
-		if(valid) this.rating = rating;
+	public void setRating(double rating) throws InvalidPropertyException {
+		if(Validation.isNumberInRange(0, 10, rating)) this.rating = rating;
+		else throw new InvalidPropertyException("rating must be in range [0 - 10]");
 	}
 	
 	public void setOpen(boolean isOpen) { 
 		this.isOpen = isOpen;
 	}
 	
-	public void setDeliveryFee(double deliveryFee) {
-		boolean valid = Validation.validate(deliveryFee, "invalid delivery fee");
-		
-		if(valid) this.deliveryFee = deliveryFee;
+	public void setDeliveryFee(double deliveryFee) throws InvalidPropertyException {
+		if(Validation.validate(deliveryFee)) {
+			this.deliveryFee = deliveryFee;	
+		}
+		else throw new InvalidPropertyException("invalid delivery fee");
 	}
 	
 	/**

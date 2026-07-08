@@ -8,9 +8,8 @@ public class Validation {
 	 * @param failMessage String message if validation fails
 	 * @return true if str is not null or empty
 	 */
-	public static boolean validate(String str, String failMessage) {
+	public static boolean validate(String str) {
 		if (str == null || str.isBlank()) {
-			System.out.println(failMessage);
 			return false;
 		}
 		return true;
@@ -21,9 +20,8 @@ public class Validation {
 	 * @param failMessage String message if validation fails
 	 * @return true if num >= 0
 	 */
-	public static boolean validate(int num, String failMessage) {
+	public static boolean validate(int num) {
 		if (num < 0) {
-			System.out.println(failMessage);
 			return false;
 		}
 		return true;
@@ -34,9 +32,8 @@ public class Validation {
 	 * @param failMessage String message if validation fails
 	 * @return true if num >= 0
 	 */
-	public static boolean validate(double num, String failMessage) {
+	public static boolean validate(double num) {
 		if (num < 0) {
-			System.out.println(failMessage);
 			return false;
 		}
 		return true;
@@ -259,9 +256,8 @@ public class Validation {
 	 * @param valueName String name of value for error printing
 	 * @return true if number between a and b including. num in [a,b]
 	 */
-	public static boolean isNumberInRange(double a, double b, double num, String valueName) {
+	public static boolean isNumberInRange(double a, double b, double num) {
 		if (!(a <= num && num <= b)) {
-			System.out.println("invalid "+ valueName +", must be in range ["+ a +", "+ b +"]");
 			return false;
 		}
 		return true;

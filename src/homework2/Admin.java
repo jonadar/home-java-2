@@ -1,5 +1,6 @@
 package homework2;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.UserInput;
 import Utils.Validation;
 
@@ -8,32 +9,29 @@ public class Admin {
 	protected String username;
 	protected String password;
 	
-	public Admin(String name, String username, String password) {
-		this.name = name;
-		this.username = username;
-		this.password = password;
+	public Admin(String name, String username, String password) throws InvalidPropertyException  {
+		setName(name);
+		setUsername(username);
+		setPassword(password);
 	}
 	
 	public String getName() { return name; }
 	public String getUsername() { return username; }
 	
 	
-	public void setName(String name) {
-		boolean valid = Validation.isName(name);
-		if (valid) this.name = name;
-		else {
-			System.out.println("invalid name");
-		}
+	public void setName(String name) throws InvalidPropertyException{
+		if (Validation.isName(name)) this.name = name;
+		else throw new InvalidPropertyException("invalid name, needs to be not empty, not only spaces, letters and spaces only");
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(String username) throws InvalidPropertyException{
 		if (Validation.isUsername(username)) this.username = username;
-		else System.out.println("invalid username");
+		else throw new InvalidPropertyException("invalid username, none empty numbers and characters");
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password) throws InvalidPropertyException{
 		if (Validation.isPassword(password)) this.password = password;
-		else System.out.println("invalid password");
+		else throw new InvalidPropertyException("invalid password, none empty numbers and characters with length of atleast 3");
 	}
 
 	public boolean login(String username, String password) {

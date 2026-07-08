@@ -2,6 +2,7 @@ package homework2;
 
 import java.util.Comparator;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.Validation;
 
 public class Order {
@@ -34,68 +35,67 @@ public class Order {
 	public static String[] getValidStatuses() {return VALID_STATUSES;}
 	public static Comparator<Order> getComparator() { return comparator; }
 	
-	public Order(int customerCode, Restaurant restaurant, double basePrice, String orderDate) {
-		this.orderCode = orderCount++;
-		this.customerCode = customerCode;
-		this.restaurant = restaurant;
-		this.restaurantCode = restaurant.getRestaurantCode();
+	public Order(int customerCode, Restaurant restaurant, double basePrice, String orderDate) throws InvalidPropertyException {
+		setCustomerCode(customerCode);
+		setRestaurant(restaurant);
+		setRestaurantCode(restaurant.getRestaurantCode());
+		setOrderDate(orderDate);
+		setBasePrice(basePrice);
+		setDeliveryStatus(VALID_STATUSES[0]);
 		this.driverId = null;
-		this.orderDate = orderDate;
-		this.basePrice = basePrice;
 		this.deliveryDate = "0";
-		this.deliveryStatus = VALID_STATUSES[0];
-		this.finalPrice = restaurant.calculatePrice(basePrice);
+		this.orderCode = orderCount++;
 		
 		System.out.println("Order with code: " + this.orderCode + " has been created.");
 	}
 	
-	public void setCustomerCode(int customerCode) {
-		boolean valid = Validation.validate(customerCode, "invalid customer code");
+	public void setCustomerCode(int customerCode) throws InvalidPropertyException{
+		boolean valid = Validation.validate(customerCode);
 		if(valid) this.customerCode = customerCode;
+		else throw new InvalidPropertyException("invalid customer code, must be positive value");
 	}
 	
-	public void setRestaurant(Restaurant rest) {
+	public void setRestaurant(Restaurant rest) throws InvalidPropertyException{
 		if (rest != null) {
 			this.restaurant = rest;
 		}
-		else {
-			System.out.println("invalid field");
-		}
+		else throw new InvalidPropertyException("invalid restaurant, must be valid none null Restaurant");
 	}
 	
-	public void setRestaurantCode(int restaurantCode) {
-		boolean valid = Validation.validate(restaurantCode, "invalid restaurant code");
+	public void setRestaurantCode(int restaurantCode) throws InvalidPropertyException{
+		boolean valid = Validation.validate(restaurantCode);
 		if(valid) this.restaurantCode = restaurantCode;
+		else throw new InvalidPropertyException("invalid restaurant code, must be positive value");
 	}
 	
-	public void setDriverId(String driverId) {
+	public void setDriverId(String driverId) throws InvalidPropertyException{
 		if(Validation.isId(driverId)) this.driverId = driverId;
-		else System.out.println("invalid driver id");
+		else throw new InvalidPropertyException("invalid driver id, must be 9 digits");
 	}
 	
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(String orderDate) throws InvalidPropertyException{
 		if(Validation.isDate(orderDate)) this.orderDate = orderDate;
-		else System.out.println("invalid order date");
+		else throw new InvalidPropertyException("invalid order date, must be in dd/mm/yyyy format between the years 2000 and 2026");
 	}
 	
-	public void setDeliveryDate(String deliveryDate) {
+	public void setDeliveryDate(String deliveryDate) throws InvalidPropertyException{
 		if(Validation.isDate(deliveryDate)) this.deliveryDate = deliveryDate;
-		else System.out.println("invalid delivery date");
+		else throw new InvalidPropertyException("invalid delivery date, must be in dd/mm/yyyy format between the years 2000 and 2026");
 	}
 	
-	public void setBasePrice(double basePrice) {
-		boolean valid = Validation.validate(basePrice, "invalid base price");
+	public void setBasePrice(double basePrice) throws InvalidPropertyException{
+		boolean valid = Validation.validate(basePrice);
 		if(valid) {
 			this.basePrice = basePrice;
 			this.finalPrice = restaurant.calculatePrice(basePrice);
-		} 
+		} else throw new InvalidPropertyException("invalid base price, must be positive value");
 	}
 	
-	public void setDeliveryStatus(String deliveryStatus) {
+	public void setDeliveryStatus(String deliveryStatus) throws InvalidPropertyException{
 		boolean inArray = !Validation.validateNotInArray(deliveryStatus, VALID_STATUSES);
 		
 		if(inArray) this.deliveryStatus = deliveryStatus;
-		else System.out.println("invalid delivery status");
+		else throw new InvalidPropertyException("invalid delivery status");
 	}
 	
 	@Override

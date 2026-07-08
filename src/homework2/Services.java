@@ -39,18 +39,22 @@ public class Services {
 		final String[] options = {"on the way", "delivered"};
 		String deliveryOption = UserInput.getStringFromOptions(options);
 		
-		order.setDeliveryStatus(deliveryOption);
-		
-		// if chose (delivered) update order delivery date and rider is available
-		if (deliveryOption.equals("delivered")) {
-			String deliveryDate = UserInput.getDate("delivery date");
-			order.setDeliveryDate(deliveryDate);
-			rider.setAvailable(true);
-		} else if (deliveryOption.equals("on the way")) {
-			rider.setAvailable(false);
+		try {
+			order.setDeliveryStatus(deliveryOption);
+			
+			// if chose (delivered) update order delivery date and rider is available
+			if (deliveryOption.equals("delivered")) {
+				String deliveryDate = UserInput.getDate("delivery date");
+				order.setDeliveryDate(deliveryDate);
+				rider.setAvailable(true);
+			} else if (deliveryOption.equals("on the way")) {
+				rider.setAvailable(false);
+			}
+			
+			System.out.println("updated order.");
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
 		}
-		
-		System.out.println("updated order.");
 	}
 	
 	// offer customer to update phone, address or email details
@@ -58,23 +62,26 @@ public class Services {
 		System.out.println("what would you like to update?");
 		final String[] options = {"phone number", "adress", "email", "none"};
 		String userSelection = UserInput.getStringFromOptions(options);
-		
-		if(userSelection.equals(options[0])) { // phone number
-			String phoneNumber = UserInput.getPhoneNumber();
-			customer.setPhoneNumber(phoneNumber);
-			System.out.println("updated phone number");
-		}
-		
-		else if (userSelection.equals(options[1])){ // address
-			String adress = UserInput.getAddress();
-			customer.setAddress(adress);
-			System.out.println("updated address");
-		}
-		
-		else if (userSelection.equals(options[2])){ // email
-			String email = UserInput.getEmail();
-			customer.setEmail(email);
-			System.out.println("updated email address");
+		try {
+			if(userSelection.equals(options[0])) { // phone number
+				String phoneNumber = UserInput.getPhoneNumber();
+				customer.setPhoneNumber(phoneNumber);
+				System.out.println("updated phone number");
+			}
+			
+			else if (userSelection.equals(options[1])){ // address
+				String adress = UserInput.getAddress();
+				customer.setAddress(adress);
+				System.out.println("updated address");
+			}
+			
+			else if (userSelection.equals(options[2])){ // email
+				String email = UserInput.getEmail();
+				customer.setEmail(email);
+				System.out.println("updated email address");
+			}
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
 		}
 	}
 	
@@ -113,12 +120,16 @@ public class Services {
 		
 		// get date
 		String date = UserInput.getDate("todays date");
-		
-		Order newOrder = new Order(customer.getCustomerCode(), restaurant, baseCost, date);
-		
-		customer.setRemainingCredit(customer.getRemainingCredit() - restaurant.calculatePrice(baseCost)); // pay order cost
-		
-		return newOrder; 
+		try {
+			Order newOrder = new Order(customer.getCustomerCode(), restaurant, baseCost, date);
+			
+			customer.setRemainingCredit(customer.getRemainingCredit() - restaurant.calculatePrice(baseCost)); // pay order cost
+			
+			return newOrder;
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// prompt user for customer details and create and return instance
@@ -134,7 +145,12 @@ public class Services {
 		String email = UserInput.getEmail();
 		
 		double remainingCredit = UserInput.getDouble("remaining credit");
-		return new Customer(name, famillyName, adress, phoneNumber, email, remainingCredit);
+		try {
+			return new Customer(name, famillyName, adress, phoneNumber, email, remainingCredit);			
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// prompt user for restaurant admin details and create and return instance
@@ -145,7 +161,12 @@ public class Services {
 		
 		String password = UserInput.getPassword();
 		
-		return new RestAdmin(restAdminName, username, password);
+		try {
+			return new RestAdmin(restAdminName, username, password);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 		
 		
@@ -233,7 +254,12 @@ public class Services {
 		
 		double deliveryFee = UserInput.getDouble("delivery fee");
 
-		return new Restaurant(restName, kitchenType, rating, isOpen, deliveryFee);
+		try {
+			return new Restaurant(restName, kitchenType, rating, isOpen, deliveryFee);			
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// prompt for premium restaurant details and return instance of restaurant
@@ -243,8 +269,12 @@ public class Services {
 		double minOrderValue = UserInput.getDouble("minimum order value");
 		
 		double orderFeePercentage = UserInput.getDouble("order fee percentage");
-
-		return new PremiumRestaurant(basicRest.getName(), basicRest.getKitchenType(), basicRest.getRating(), basicRest.isOpen(), basicRest.getDeliveryFee(), minOrderValue, orderFeePercentage);
+		try {
+			return new PremiumRestaurant(basicRest.getName(), basicRest.getKitchenType(), basicRest.getRating(), basicRest.isOpen(), basicRest.getDeliveryFee(), minOrderValue, orderFeePercentage);			
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// prompt for fast food restaurant details and return instance of restaurant
@@ -254,7 +284,12 @@ public class Services {
 		
 		double fastDeliveryFee = UserInput.getDouble("fast delivery fee");
 		
-		return new FastFoodRestaurant(basicRest.getName(), basicRest.getKitchenType(), basicRest.getRating(), basicRest.isOpen(), basicRest.getDeliveryFee(), averageCookTime, fastDeliveryFee);
+		try {			
+			return new FastFoodRestaurant(basicRest.getName(), basicRest.getKitchenType(), basicRest.getRating(), basicRest.isOpen(), basicRest.getDeliveryFee(), averageCookTime, fastDeliveryFee);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// prompt for rider details and return instance
@@ -269,7 +304,12 @@ public class Services {
 		
 		boolean isAvailable = UserInput.getBoolean("is is available");
 		
-		return new Rider(id, fullName, phoneNumber, vehicle, isAvailable);
+		try {
+			return new Rider(id, fullName, phoneNumber, vehicle, isAvailable);			
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+		return null;
 	}
 	
 	// find rider from array using their id, returns rider or null if not found
@@ -440,7 +480,11 @@ public class Services {
 	 */
 	public static void chargeCustomerBalance(Customer customer) {
 		double chargeAmount = UserInput.getDouble("amount to add");
-		customer.setRemainingCredit(customer.getRemainingCredit() + chargeAmount);
+		try {			
+			customer.setRemainingCredit(customer.getRemainingCredit() + chargeAmount);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
 	}
 	
 	/**
@@ -448,7 +492,11 @@ public class Services {
 	 */
 	public static void withdrawCustomerBalance(Customer customer) {
 		double withdrawAmount = UserInput.getDoubleFromRange(0, customer.getRemainingCredit(), "amount to withdraw");
-		customer.setRemainingCredit(customer.getRemainingCredit() - withdrawAmount);
+		try {			
+			customer.setRemainingCredit(customer.getRemainingCredit() - withdrawAmount);
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
 	}
 	
 }

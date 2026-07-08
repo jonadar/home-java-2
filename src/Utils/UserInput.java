@@ -86,7 +86,7 @@ public class UserInput {
 			if(s.hasNextDouble()) {				
 				userValue = s.nextDouble();
 				s.nextLine(); // avoid issues with newline
-				if(Validation.isNumberInRange(a, b, userValue, valueName)) return userValue;
+				if(Validation.isNumberInRange(a, b, userValue)) return userValue;
 			}else {				
 				s.next();
 			}

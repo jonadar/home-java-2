@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import Utils.UserInput;
 import Utils.Validation;
@@ -27,7 +28,11 @@ public class DeliveryDataBase {
 	
 	
 	public DeliveryDataBase(){
-		this.systemAdministrator = new Admin("Steve", "admin", "12345");
+		try {			
+			this.systemAdministrator = new Admin("Steve", "admin", "12345");
+		} catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		}
 		
 		this.customers = new ArrayList<Customer>();
 		this.restaurantAdmins = new ArrayList<RestAdmin>();
@@ -423,7 +428,7 @@ public class DeliveryDataBase {
 				Services.displayArrayAsNumberedList(this.customers);
 				break;
 			case 2:
-				this.customers.sort((c1, c2) -> c1.getfirstName().compareTo(c2.getfirstName()));
+				this.customers.sort((c1, c2) -> c1.getFirstName().compareTo(c2.getFirstName()));
 				Services.displayArrayAsNumberedList(this.customers);
 				break;
 			case 3:
