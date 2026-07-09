@@ -139,8 +139,16 @@ public class customerPageController {
 
     @FXML
     void updateCustomerDetails(ActionEvent event) {
-    	CustomerUserPageController.customer = CustomersTbl.getSelectionModel().getSelectedItem();
-    	Main.setScene("/userPages/updatePersonalInfo.fxml");
+    	try {    		
+    		Customer selected = CustomersTbl.getSelectionModel().getSelectedItem();
+    		
+    		if (selected == null) throw new Exception("no customer selected");
+    		
+    		CustomerUserPageController.customer = selected; // piggy back off other controllers static value.
+    		Main.setScene("/userPages/updatePersonalInfo.fxml");
+    	} catch (Exception e) {
+    		ConsolePrinter.printError(e);
+		}
     }
 
     @FXML

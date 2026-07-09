@@ -33,6 +33,8 @@ public class createOrderController {
         	Double price = Double.parseDouble(basePrice.getText());
         	Order order = new Order(Code, res, price, orderDate.getText());
         	Main.DDB.addOrder(order);
+        	ConsolePrinter.inform("created new order");
+        	Main.goBackScene();
     	}  catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {

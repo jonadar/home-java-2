@@ -38,6 +38,8 @@ public class createCustomerController {
     		Double remainingCredit = Double.parseDouble(remainingCreditText.getText());
         	Customer customer = new Customer(firstNameText.getText(), lastNameText.getText(), address.getText(), phoneNumberText.getText(), emailText.getText(), remainingCredit);
         	Main.DDB.addCustomer(customer);
+        	ConsolePrinter.inform("created new customer");
+        	Main.goBackScene();
     	}  catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {
