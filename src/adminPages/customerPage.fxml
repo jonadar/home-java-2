@@ -50,13 +50,13 @@
       </VBox>
       <VBox layoutX="518.0" layoutY="206.0" prefHeight="52.0" prefWidth="350.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#displayiRestsOfCustomer" prefWidth="350.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Displaying all restaurants the customer ordered from" />
+            <Button mnemonicParsing="false" onAction="#displayiRestsOfCustomer" prefWidth="350.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Display all restaurants the customer ordered from" />
             <TextField fx:id="displayiRestsOfCustomerText" />
          </children>
       </VBox>
       <VBox layoutX="521.0" layoutY="133.0" prefHeight="67.0" prefWidth="350.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#luxuryrest" prefWidth="350.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Displaying luxury restaurants that the customer ordered from" />
+            <Button mnemonicParsing="false" onAction="#luxuryrest" prefWidth="350.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Display luxury restaurants that the customer ordered from" />
             <TextField fx:id="luxuryText" />
          </children>
       </VBox>

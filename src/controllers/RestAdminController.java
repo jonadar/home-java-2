@@ -1,12 +1,8 @@
 package controllers;
-import java.util.ArrayList;
 
 import Utils.ConsolePrinter;
 import application.Main;
-import homework2.DeliveryDataBase;
-import homework2.Order;
 import homework2.RestAdmin;
-import homework2.Restaurant;
 import homework2.Services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 public class RestAdminController {
 
 	private ObservableList<RestAdmin> restAdmins = FXCollections.observableArrayList(Main.DDB.getRestaurantAdmins());
@@ -45,8 +42,9 @@ public class RestAdminController {
     		String userName = idMtext.getText();
     		int rectCode = Integer.parseInt(idResttext.getText());
     		Services.assignRestAdminToRestaurant(Main.DDB.getRestaurantAdmins(), Main.DDB.getRestaurants(), userName, rectCode);
-	        	
-    	} catch (Exception e) {
+    	} catch (NumberFormatException e) {
+			ConsolePrinter.printError("could not parse values, make sure restaurant code is number");
+		} catch (Exception e) {
 			ConsolePrinter.printError(e);	
     	}
     }
@@ -75,7 +73,6 @@ public class RestAdminController {
     @FXML
     void showAllMangers(ActionEvent event) {
     	tblAllRestAdmin.setItems(restAdmins);
-
     }
     
     @FXML

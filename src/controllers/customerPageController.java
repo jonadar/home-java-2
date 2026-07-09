@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 
+import MyExceptions.CustomerNotFoundException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
@@ -75,7 +76,6 @@ public class customerPageController {
     @FXML
     void addNewcustomer(ActionEvent event) {
     	Main.setScene("/adminPages/createCustomer.fxml");
-
     }
 
     @FXML
@@ -85,12 +85,15 @@ public class customerPageController {
 	    	Customer customer = Services.findCustomer(code, Main.DDB.getCustomers());
 	    	CustomersTbl.setItems(FXCollections.observableArrayList(customer));
 
-    	} catch (Exception e) {
-			ConsolePrinter.printError(e);	
+    	} catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	} catch (CustomerNotFoundException e) {
+			ConsolePrinter.printError(e);
     	}
  
     }
 
+    // display restaurants of customer with specific code
     @FXML
     void displayiRestsOfCustomer(ActionEvent event) {
     	try {
@@ -100,10 +103,12 @@ public class customerPageController {
 	    	if (rests != null && !rests.isEmpty()) {
 	    		ObservableList<Restaurant> restsList = FXCollections.observableArrayList(rests);
 	    		restTbl.setItems(restsList);
-	    }
-	    	} catch (Exception e) {
-				ConsolePrinter.printError(e);
 	    	}
+    	} catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	} catch (CustomerNotFoundException e) {
+			ConsolePrinter.printError(e);
+    	}
     }
 
     @FXML
@@ -124,7 +129,9 @@ public class customerPageController {
 		    		restTbl.setItems(primumRestsList);
 	    		}
 	    	}
-    	} catch (Exception e) {
+    	} catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	} catch (CustomerNotFoundException e) {
 			ConsolePrinter.printError(e);
     	}
     }
@@ -132,7 +139,7 @@ public class customerPageController {
     @FXML
     void updateCustomerDetails(ActionEvent event) {
     	Customer customer = CustomersTbl.getSelectionModel().getSelectedItem();
-
+    	//TODO
     }
 
     @FXML

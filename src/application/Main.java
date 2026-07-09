@@ -29,7 +29,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		
-		SaveManager.load(DDB);
+//		SaveManager.load(DDB);
 //		SaveManager.save(DDB);
 		
 		setScene("/application/loginPage.fxml");

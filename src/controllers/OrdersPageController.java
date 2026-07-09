@@ -3,6 +3,8 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import MyExceptions.CustomerNotFoundException;
+import MyExceptions.RestaurantNotFoundException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.Customer;
@@ -68,9 +70,11 @@ public class OrdersPageController {
     			ArrayList<Order> customerOrders = Main.DDB.getCustomerOrders().get(customer.getCustomerCode());
             	tblAllOrders.setItems(FXCollections.observableArrayList(customerOrders));
     		}
-	    } catch (Exception e) {
+	    } catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	} catch (CustomerNotFoundException e) {
 			ConsolePrinter.printError(e);
-		}
+    	}
     }
     
     @FXML
@@ -97,9 +101,11 @@ public class OrdersPageController {
 				ArrayList<Order> restOrders = Main.DDB.getCustomerOrders().get(restaurant.getRestaurantCode());
 	        	tblAllOrders.setItems(FXCollections.observableArrayList(restOrders));
 			}
-	    } catch (Exception e) {
+	    } catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	} catch (RestaurantNotFoundException e) {
 			ConsolePrinter.printError(e);
-		}
+    	}
     }
     
    
@@ -112,10 +118,12 @@ public class OrdersPageController {
     	try {
     		int code = Integer.parseInt(text1.getText());
         	Order order = Services.findOrder(code, Main.DDB.getOrders());
-        	tblAllOrders.setItems(FXCollections.observableArrayList(List.of(order)));
-	    } catch (Exception e) {
-			ConsolePrinter.printError(e);
-		}
+        	if (order != null) {        		
+        		tblAllOrders.setItems(FXCollections.observableArrayList(List.of(order)));
+        	}
+	    } catch (NumberFormatException e) {
+			ConsolePrinter.printError("enter valid code, digits only");
+    	}
     }
     
     @FXML

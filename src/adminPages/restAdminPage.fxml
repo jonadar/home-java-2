@@ -46,7 +46,7 @@
       <VBox layoutX="210.0" layoutY="52.0" prefHeight="200.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManagerToRest" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Add Manager to Restaurant" textAlignment="CENTER" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="200.0" text="manger id" textAlignment="CENTER" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="200.0" text="manger usernam" textAlignment="CENTER" />
             <TextField fx:id="idMtext" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="207.0" text="restaurant code" />
             <TextField fx:id="idResttext" />

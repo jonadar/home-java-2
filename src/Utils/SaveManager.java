@@ -22,26 +22,36 @@ import homework2.Services;
 
 public class SaveManager {
 	
-	public static void save(DeliveryDataBase DDB){
-		saveCustomers(DDB.getCustomers());
-		saveOrders(DDB.getOrders());
-		saveRiders(DDB.getRiders());
-		saveRestaurants(DDB.getRestaurants());
-		saveRestaurantAdmins(DDB.getRestaurantAdmins());
+	public static void save(DeliveryDataBase DDB) {
+		try {			
+			saveCustomers(DDB.getCustomers());
+			saveOrders(DDB.getOrders());
+			saveRiders(DDB.getRiders());
+			saveRestaurants(DDB.getRestaurants());
+			saveRestaurantAdmins(DDB.getRestaurantAdmins());
+			ConsolePrinter.inform("saved info to files");
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
 	}
 	
 	public static void load(DeliveryDataBase DDB) {
-		loadCustomers(DDB);
-		loadRestaurants(DDB);
-		loadOrders(DDB);
-		loadRiders(DDB);
-		loadRestaurantAdmins(DDB);
+		try {			
+			loadCustomers(DDB);
+			loadRestaurants(DDB);
+			loadOrders(DDB);
+			loadRiders(DDB);
+			loadRestaurantAdmins(DDB);
+			ConsolePrinter.inform("loaded info from files");
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
 	}
 	
 	/*
 	 *  ================== save functions = ===========================
 	 */
-	public static void saveCustomers(ArrayList<Customer> customers) {
+	public static void saveCustomers(ArrayList<Customer> customers) throws Exception {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/customers.txt"));
 			for (Customer c : customers) {
@@ -50,11 +60,11 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			throw new Exception("could not find customer save");
 		}
 	}
 	
-	public static void saveOrders(ArrayList<Order> orders) {
+	public static void saveOrders(ArrayList<Order> orders) throws Exception{
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/orders.txt"));
 			for (Order o : orders) {
@@ -63,11 +73,11 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find order save");
+			throw new Exception("could not find order save");
 		}
 	}
 	
-	public static void saveRiders(ArrayList<Rider> riders) {
+	public static void saveRiders(ArrayList<Rider> riders) throws Exception{
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/riders.txt"));
 			for (Rider r : riders) {
@@ -76,11 +86,11 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find rider save");
+			throw new Exception("could not find rider save");
 		}
 	}
 	
-	public static void saveRestaurants(ArrayList<Restaurant> restaurants) {
+	public static void saveRestaurants(ArrayList<Restaurant> restaurants) throws Exception{
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/restaurants.txt"));
 			for (Restaurant r : restaurants) {
@@ -98,11 +108,11 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find restaurants save");
+			throw new Exception("could not find restaurants save");
 		}
 	}
 	
-	public static void saveRestaurantAdmins(ArrayList<RestAdmin> restaurantAdmins) {
+	public static void saveRestaurantAdmins(ArrayList<RestAdmin> restaurantAdmins) throws Exception {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("data/saves/restaurantAdmins.txt"));
 			for (RestAdmin a : restaurantAdmins) {
@@ -120,7 +130,7 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find restaurantAdmins save");
+			throw new Exception("could not find restaurantAdmins save");
 		}
 	}
 	
@@ -128,7 +138,7 @@ public class SaveManager {
 	 *  ================== load functions = ===========================
 	 */
 	
-	public static void loadCustomers(DeliveryDataBase DDB) {
+	public static void loadCustomers(DeliveryDataBase DDB) throws Exception{
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("data/saves/customers.txt"));
 			String line;
@@ -148,18 +158,18 @@ public class SaveManager {
 						Customer customer = new Customer(fname, lname, address, phone, email, balance);
 						DDB.addCustomer(customer);
 					} catch (InvalidPropertyException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					}
 				}
 			}
 			
 			reader.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			throw new Exception("could not find customer save");
 		}
 	}
 	
-	public static void loadOrders(DeliveryDataBase DDB) {
+	public static void loadOrders(DeliveryDataBase DDB) throws Exception{
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("data/saves/orders.txt"));
 			String line;
@@ -189,9 +199,9 @@ public class SaveManager {
 					
 						DDB.addOrder(order);
 					} catch (RestaurantNotFoundException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					} catch (InvalidPropertyException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					}
 					
 				}
@@ -199,11 +209,11 @@ public class SaveManager {
 			
 			reader.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find order save");
+			throw new Exception("could not find order save");
 		}
 	}
 	
-	public static void loadRiders(DeliveryDataBase DDB) {
+	public static void loadRiders(DeliveryDataBase DDB) throws Exception{
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("data/saves/riders.txt"));
 			String line;
@@ -222,18 +232,18 @@ public class SaveManager {
 						Rider rider = new Rider(id, name, phone, vehicle, available);
 						DDB.addRider(rider);
 					} catch (InvalidPropertyException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					}
 				}
 			}
 			
 			reader.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find rider save");
+			throw new Exception("could not find rider save");
 		}
 	}
 	
-	public static void loadRestaurants(DeliveryDataBase DDB) {
+	public static void loadRestaurants(DeliveryDataBase DDB) throws Exception{
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("data/saves/restaurants.txt"));
 			String line;
@@ -261,18 +271,18 @@ public class SaveManager {
 						
 						DDB.addRestaurant(rest);
 					} catch (InvalidPropertyException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					}
 				}
 			}
 			
 			reader.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find restaurant save");
+			throw new Exception("could not find restaurant save");
 		}
 	}
 	
-	public static void loadRestaurantAdmins(DeliveryDataBase DDB) {
+	public static void loadRestaurantAdmins(DeliveryDataBase DDB) throws Exception{
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("data/saves/restaurantAdmins.txt"));
 			String line;
@@ -303,14 +313,14 @@ public class SaveManager {
 						
 						DDB.addRestaurantAdmin(restAdmin);
 					} catch (InvalidPropertyException e) {
-						ConsolePrinter.printError(e);
+						throw new Exception(e.getMessage());
 					}
 				}
 			}
 			
 			reader.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find restaurantAdmins save");
+			throw new Exception("could not find restaurantAdmins save");
 		}
 	}
 	

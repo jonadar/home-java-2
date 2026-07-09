@@ -9,7 +9,7 @@ public class Validation {
 	 * @return true if str is not null or empty
 	 */
 	public static boolean validate(String str) {
-		if (str == null || str.isBlank()) {
+		if (str == null || str.isBlank() || str.contains(";")) { // must not contain ';' because we use it for saves
 			return false;
 		}
 		return true;
