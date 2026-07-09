@@ -26,6 +26,7 @@ public class resAdminInfoController {
     	if (restA != null) {
     		try {
 				restA.setName(text.getText());
+				ConsolePrinter.inform("name saved");
 			}  catch (InvalidPropertyException e) {
 				ConsolePrinter.printError(e);
 			}
@@ -38,6 +39,7 @@ public class resAdminInfoController {
     	if (restA != null) {
     		try {
 				restA.setPassword(text.getText());
+				ConsolePrinter.inform("password saved");
 			}  catch (InvalidPropertyException e) {
 				ConsolePrinter.printError(e);
 			}
@@ -50,6 +52,7 @@ public class resAdminInfoController {
     	if (restA != null) {
     		try {
 				restA.setUsername(text.getText());
+				ConsolePrinter.inform("username saved");
 			}  catch (InvalidPropertyException e) {
 				ConsolePrinter.printError(e);
 			}
