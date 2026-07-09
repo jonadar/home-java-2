@@ -122,7 +122,7 @@ public class CustomerUserPageController {
 
     @FXML
     void updatePersonalInfo(ActionEvent event) {
-    	Main.setScene("/userPages/updetUserInfoPage.fxml");
+    	Main.setScene("/userPages/updatePersonalInfo.fxml");
 
     }
 
