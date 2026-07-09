@@ -42,7 +42,7 @@
           <TableColumn fx:id="colname" prefWidth="75.0" text="name" />
         </columns>
       </TableView>
-      <VBox layoutX="210.0" layoutY="52.0" prefHeight="200.0" prefWidth="199.0">
+      <VBox layoutX="210.0" layoutY="52.0" prefHeight="120.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addManagerToRest" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Add Manager to Restaurant" textAlignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="200.0" text="manger username" textAlignment="CENTER" />
@@ -51,5 +51,6 @@
             <TextField fx:id="idResttext" />
          </children>
       </VBox>
+      <Button layoutX="210.0" layoutY="217.0" mnemonicParsing="false" onAction="#createRestAdmin" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="create new restaurant admin" textAlignment="CENTER" />
    </children>
 </AnchorPane>

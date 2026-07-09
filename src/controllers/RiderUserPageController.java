@@ -54,8 +54,8 @@ public class RiderUserPageController {
     void numberOfDeliveries(ActionEvent event) {
     	// do with stream api
     	int counter = (int) rider.getOrders().stream().filter(order -> order.getDeliveryStatus().equals("delivered")).count();
-    		Alert alert = new Alert(AlertType.INFORMATION, "counter");
-    		alert.showAndWait();
+		Alert alert = new Alert(AlertType.INFORMATION, "number of deliveries: " + counter);
+		alert.showAndWait();
     }
 
     @FXML

@@ -78,6 +78,11 @@ public class RestAdminController {
     private TableView<RestAdmin> tblAllRestAdmin;
     
     @FXML
+    void createRestAdmin() {
+    	Main.setScene("/adminPages/createRestAdmin.fxml");
+    }
+    
+    @FXML
     void showAllMangers(ActionEvent event) {
     	tblAllRestAdmin.setItems(restAdmins);
     }

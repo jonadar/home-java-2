@@ -142,6 +142,7 @@ public class CustomerUserPageController {
     	try {
 			double amount = Double.parseDouble(amountInput.getText());
 			
+			if(amount < 0) throw new Exception("cannot withdraw negative amount");
 			if(amount > customer.getRemainingCredit()) throw new Exception("cannot withdraw more than total balance");
 			
 			customer.setRemainingCredit(customer.getRemainingCredit() - amount);
@@ -155,6 +156,8 @@ public class CustomerUserPageController {
     void chargeBalance(ActionEvent event) {
     	try {
 			Double amount = Double.parseDouble(amountInput.getText());
+			
+			if(amount < 0) throw new Exception("cannot charge negative amount");
 			
 			customer.setRemainingCredit(customer.getRemainingCredit() + amount);
 			customerBalance.setText(customer.getRemainingCredit() + "");
