@@ -52,7 +52,7 @@ public class riderPageController {
 
     @FXML
     void addNewRider(ActionEvent event) {
-    	// to do
+    	Main.setScene("/userPages/createRider.fxml");
     }
 
     @FXML
