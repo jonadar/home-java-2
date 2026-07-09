@@ -21,7 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class customerPageController {
 	
-	private ObservableList<Customer> Customers = FXCollections.observableArrayList(Main.DDB.getCustomers());
+	private ObservableList<Customer> customers = FXCollections.observableArrayList(Main.DDB.getCustomers());
 
     @FXML
     private TableView<Customer> CustomersTbl;
@@ -113,7 +113,8 @@ public class customerPageController {
 
     @FXML
     void displayingallcustomers(ActionEvent event) {
-    	CustomersTbl.setItems(Customers);
+    	customers = FXCollections.observableArrayList(Main.DDB.getCustomers());
+    	CustomersTbl.setItems(customers);
 
     }
 
@@ -138,8 +139,8 @@ public class customerPageController {
 
     @FXML
     void updateCustomerDetails(ActionEvent event) {
-    	Customer customer = CustomersTbl.getSelectionModel().getSelectedItem();
-    	//TODO
+    	CustomerUserPageController.customer = CustomersTbl.getSelectionModel().getSelectedItem();
+    	Main.setScene("/userPages/updatePersonalInfo.fxml");
     }
 
     @FXML
@@ -172,7 +173,7 @@ public class customerPageController {
     	cusCreditCol.setCellValueFactory(new PropertyValueFactory<>("remainingCredit"));
     	cusLastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
     	cusNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    	CustomersTbl.setItems(Customers);
+    	CustomersTbl.setItems(customers);
     	
     	// rests
     	restColcode.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
