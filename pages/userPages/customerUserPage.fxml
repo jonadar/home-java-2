@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="810.0" prefWidth="1073.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerUserPageController">
+<AnchorPane prefHeight="711.0" prefWidth="1073.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerUserPageController">
    <children>
       <VBox layoutX="807.0" layoutY="283.0" prefHeight="186.0" prefWidth="203.0" spacing="10.0">
          <children>
@@ -18,10 +18,10 @@
             <Button mnemonicParsing="false" onAction="#updatePersonalInfo" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="update personal info" />
             <Button mnemonicParsing="false" onAction="#viewOrderedRestaurant" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view ordered restaurants" />
             <Button mnemonicParsing="false" onAction="#viewOrderedPremiumRestaurants" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view ordered premium restaurants" />
-            <Button mnemonicParsing="false" onAction="#searchRestaurantByCode" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="search restaurant by code" />
+            <Button mnemonicParsing="false" onAction="#viewAllRestaurant" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view all restaurants" />
          </children>
       </VBox>
-      <Button layoutX="981.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: red;" text="Logout" textFill="WHITE">
+      <Button layoutX="995.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: red;" text="exit" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -55,7 +55,7 @@
       </VBox>
       <Button layoutX="763.0" layoutY="187.0" mnemonicParsing="false" onAction="#chargeBalance" prefHeight="26.0" prefWidth="112.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="charge balance" />
       <Button layoutX="883.0" layoutY="187.0" mnemonicParsing="false" onAction="#withdrawBalance" prefHeight="26.0" prefWidth="112.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="withdraw balance" />
-      <TableView fx:id="restaurantTable" layoutX="14.0" layoutY="411.0" prefHeight="379.0" prefWidth="722.0">
+      <TableView fx:id="restaurantTable" layoutX="14.0" layoutY="411.0" prefHeight="282.0" prefWidth="722.0">
          <columns>
             <TableColumn fx:id="restCodeCol" prefWidth="102.66666412353516" text="restaurant code" />
             <TableColumn fx:id="restNameCol" prefWidth="75.33333587646484" text="name" />
@@ -88,6 +88,7 @@
       </Label>
       <TextField fx:id="amountInput" layoutX="822.0" layoutY="218.0" prefHeight="25.0" prefWidth="174.0" promptText="amount" />
       <Label layoutX="766.0" layoutY="222.0" prefHeight="17.0" prefWidth="57.0" text="amount:" />
-      <TextField fx:id="restaurantCodeInput" layoutX="806.0" layoutY="457.0" prefHeight="25.0" prefWidth="203.0" promptText="restaurant code" />
+      <Button layoutX="809.0" layoutY="491.0" mnemonicParsing="false" onAction="#searchRestaurantByCode" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="search restaurant by code" />
+      <TextField fx:id="restaurantCodeInput" layoutX="808.0" layoutY="518.0" prefHeight="25.0" prefWidth="203.0" promptText="restaurant code" />
    </children>
 </AnchorPane>

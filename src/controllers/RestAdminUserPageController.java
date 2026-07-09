@@ -25,6 +25,7 @@ public class RestAdminUserPageController {
 	ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 	
 	// order table
+	
 	@FXML
     private TableView<Order> orderTable;
 	
@@ -50,6 +51,7 @@ public class RestAdminUserPageController {
     private TableColumn<Order, String> statusCol;
     
 	// restaurant table
+    
     @FXML
     private TableView<Restaurant> restaurantTable;
     
@@ -92,12 +94,12 @@ public class RestAdminUserPageController {
     @FXML
     void addCustomer(ActionEvent event) {
     	Main.setScene("/adminPages/createCustomer.fxml");
-
     }
 
     @FXML
     void addOrder(ActionEvent event) {
-
+    	createOrderController.referer = restaurantAdmin;
+    	Main.setScene("/userPages/createOrder.fxml");
     }
 
     @FXML
@@ -150,15 +152,14 @@ public class RestAdminUserPageController {
 
     @FXML
     void viewOpenRestaurantsByType(ActionEvent event) {
-        	String type = viewOpenResByKText.getText();
-        	ObservableList<Restaurant> restaurantsByType = FXCollections.observableArrayList();
-        	for (Restaurant r : restaurantAdmin.getRestaurants()) {
-				if (r.isOpen() && r.getKitchenType().equals(type)) {
-					restaurantsByType.add(r);
-				}
+    	String type = viewOpenResByKText.getText();
+    	ObservableList<Restaurant> restaurantsByType = FXCollections.observableArrayList();
+    	for (Restaurant r : restaurantAdmin.getRestaurants()) {
+			if (r.isOpen() && r.getKitchenType().equals(type)) {
+				restaurantsByType.add(r);
 			}
-        	restaurantTable.setItems(restaurantsByType);
-    	
+		}
+    	restaurantTable.setItems(restaurantsByType);
     }
 
     @FXML
@@ -173,8 +174,13 @@ public class RestAdminUserPageController {
 			}
         	orderTable.setItems(ordersByRes);
     	} catch (Exception e) {
-    			ConsolePrinter.printError(e);	
-        	}
+    		ConsolePrinter.printError(e);	
+        }
+    }
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
     }
     
     @FXML

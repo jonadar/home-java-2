@@ -22,7 +22,6 @@ public class restaurantPageController {
 	
 	private ObservableList<Restaurant> restaurants = FXCollections.observableArrayList(Main.DDB.getRestaurants());
 
-
     @FXML
     private TableColumn<Restaurant, Integer> codeCol;
 

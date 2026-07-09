@@ -97,8 +97,8 @@ public class CustomerUserPageController {
 
     @FXML
     void createOrder(ActionEvent event) {
+    	createOrderController.referer = customer;
     	Main.setScene("/userPages/createOrder.fxml");
-
     }
 
     @FXML
@@ -161,6 +161,12 @@ public class CustomerUserPageController {
 	    } catch (Exception e) {
 			ConsolePrinter.printError(e);
 		}
+    }
+    
+    
+    @FXML
+    void viewAllRestaurant() {
+    	restaurantTable.setItems(FXCollections.observableArrayList(Main.DDB.getRestaurants()));
     }
     
     @FXML

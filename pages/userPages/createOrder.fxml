@@ -8,12 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="372.0" prefWidth="246.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26" fx:controller="controllers.createOrderController">
+<AnchorPane prefHeight="372.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.createOrderController">
    <children>
       <VBox layoutX="22.0" layoutY="70.0" prefHeight="221.0" prefWidth="195.0">
          <children>
-            <Label text="customerCode">
+            <Label fx:id="customerCodeLable" text="customerCode">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
