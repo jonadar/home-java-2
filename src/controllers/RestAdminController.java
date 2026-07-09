@@ -40,8 +40,9 @@ public class RestAdminController {
     void addManagerToRest(ActionEvent event) {
     	try {
     		String userName = idMtext.getText();
-    		int rectCode = Integer.parseInt(idResttext.getText());
-    		Services.assignRestAdminToRestaurant(Main.DDB.getRestaurantAdmins(), Main.DDB.getRestaurants(), userName, rectCode);
+    		int restCode = Integer.parseInt(idResttext.getText());
+    		Services.assignRestAdminToRestaurant(Main.DDB.getRestaurantAdmins(), Main.DDB.getRestaurants(), userName, restCode);
+    		ConsolePrinter.inform("assigned " + userName + " to restaurant " + restCode);
     	} catch (NumberFormatException e) {
 			ConsolePrinter.printError("could not parse values, make sure restaurant code is number");
 		} catch (Exception e) {

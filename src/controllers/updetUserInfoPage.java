@@ -10,9 +10,6 @@ import javafx.scene.control.TextField;
 import controllers.CustomerUserPageController;
 
 public class updetUserInfoPage {
-
-
-	
     @FXML
     private TextField text;
 
@@ -20,6 +17,8 @@ public class updetUserInfoPage {
     void adress(ActionEvent event) {
     	try {
 			CustomerUserPageController.customer.setAddress(text.getText());
+			ConsolePrinter.inform("updated customer address to " + text.getText());
+			Main.goBackScene();
 		}  catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		}
@@ -29,7 +28,22 @@ public class updetUserInfoPage {
     void email(ActionEvent event) {
     	try {
 			CustomerUserPageController.customer.setEmail(text.getText());
+			ConsolePrinter.inform("updated customer email to " + text.getText());
+			Main.goBackScene();
 		} catch (InvalidPropertyException e) {
+			ConsolePrinter.printError(e);
+		}
+    }
+
+    
+
+    @FXML
+    void phonNum(ActionEvent event) {
+    	try {
+			CustomerUserPageController.customer.setPhoneNumber(text.getText());
+			ConsolePrinter.inform("updated customer phone number to " + text.getText());
+			Main.goBackScene();
+		}  catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		}
     }
@@ -38,15 +52,5 @@ public class updetUserInfoPage {
     void exit(ActionEvent event) {
     	Main.goBackScene();
     }
-
-    @FXML
-    void phonNum(ActionEvent event) {
-    	try {
-			CustomerUserPageController.customer.setPhoneNumber(text.getText());
-		}  catch (InvalidPropertyException e) {
-			ConsolePrinter.printError(e);
-		}
-    }
-
-
+    
 }

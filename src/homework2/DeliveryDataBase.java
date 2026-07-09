@@ -364,6 +364,13 @@ public class DeliveryDataBase {
 		this.displayAllOrders(restaurant);
 	}
 	
+	// return List of orders from all restaurants owned by a restaurant admin
+	public List<Order> getOrdersOfRestaurant(RestAdmin restAdmin) {
+		ArrayList<Restaurant> adminRestaurants = restAdmin.getRestaurants();
+		
+		return orders.stream().filter(order -> adminRestaurants.contains(order.getRest())).collect(Collectors.toList());
+	}
+	
 	public void showOpenRestaurantsByKitchenType(RestAdmin restAdmin) {
 		String kitchenType = UserInput.getName("kitchen type");
 		ArrayList<Restaurant> restaurantsWithType = this.openRestaurantsByKitchenType(kitchenType);

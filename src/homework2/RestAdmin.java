@@ -64,7 +64,7 @@ public class RestAdmin extends Admin{
 					break;
 				case 4:
 //					DDB.showAvailableRiders();
-					Services.assignOrderToRider(DDB.getRiders(), DDB.getOrders());
+//					Services.assignOrderToRider(DDB.getRiders(), DDB.getOrders());
 					break;
 				case 5:
 					DDB.showOrdersOfRestaurant(this);

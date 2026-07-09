@@ -81,7 +81,7 @@ public class Admin {
 					DDB.addRider(rider);
 					break;
 				case 6:
-					Services.assignOrderToRider(DDB.getRiders(), DDB.getOrders());
+//					Services.assignOrderToRider(DDB.getRiders(), DDB.getOrders());
 					break;
 				case 7:
 					DDB.displayAllOrders(); // show all system orders

@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 import MyExceptions.InvalidPropertyException;
 import MyExceptions.RestaurantNotFoundException;
+import MyExceptions.RiderNotFoundException;
 import homework2.Customer;
 import homework2.DeliveryDataBase;
 import homework2.FastFoodRestaurant;
@@ -25,8 +26,8 @@ public class SaveManager {
 	public static void save(DeliveryDataBase DDB) {
 		try {			
 			saveCustomers(DDB.getCustomers());
-			saveOrders(DDB.getOrders());
 			saveRiders(DDB.getRiders());
+			saveOrders(DDB.getOrders());
 			saveRestaurants(DDB.getRestaurants());
 			saveRestaurantAdmins(DDB.getRestaurantAdmins());
 			ConsolePrinter.inform("saved info to files");
@@ -39,8 +40,8 @@ public class SaveManager {
 		try {			
 			loadCustomers(DDB);
 			loadRestaurants(DDB);
-			loadOrders(DDB);
 			loadRiders(DDB);
+			loadOrders(DDB);
 			loadRestaurantAdmins(DDB);
 			ConsolePrinter.inform("loaded info from files");
 		} catch (Exception e) {
@@ -191,14 +192,24 @@ public class SaveManager {
 						
 						Order order = new Order(code, rest, basePrice, orderDate);
 						
-						if(!riderId.equals("null")) order.setDriverId(riderId);
-						
-						if(Validation.isDate(deliveryDate)) order.setDeliveryDate(deliveryDate);
-						
-						order.setDeliveryStatus(status);
+						if(!riderId.equals("null")) {
+							
+							
+							Rider rider = Services.findRider(riderId, DDB.getRiders());
+							
+							rider.addOrderFromSave(order);
+							
+							order.setDriverId(rider.getId());
+							
+							order.setDeliveryStatus(status);
+							
+							if(Validation.isDate(deliveryDate)) order.setDeliveryDate(deliveryDate);
+						} 
 					
 						DDB.addOrder(order);
 					} catch (RestaurantNotFoundException e) {
+						throw new Exception(e.getMessage());
+					} catch (RiderNotFoundException e) {
 						throw new Exception(e.getMessage());
 					} catch (InvalidPropertyException e) {
 						throw new Exception(e.getMessage());

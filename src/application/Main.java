@@ -23,7 +23,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	public final static DeliveryDataBase DDB = new DeliveryDataBase();
 	public static Stage stage;
-	public static Stack<Scene> sceneStack = new Stack<>();
+	public static Stack<String> sceneStack = new Stack<>();
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -42,18 +42,14 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public static void setScene(Scene scene) {
-		stage.setScene(scene);
-		sceneStack.push(scene);
-	}
-	
 	public static void setScene(String path) {
 		try{			
 			Parent root = FXMLLoader.load(Main.class.getResource(path));
 			
 			Scene scene = new Scene(root);
 			
-			setScene(scene);
+			stage.setScene(scene);
+			sceneStack.push(path);
 		} catch (IOException e) {
 			ConsolePrinter.printError(e.getMessage() + ". could not find view file " + path);
 		} catch (Exception e) {
@@ -62,9 +58,19 @@ public class Main extends Application {
 	}
 	
 	public static void goBackScene() {
-		if (sceneStack.size() >= 2) {			
-			sceneStack.pop();
-			stage.setScene(sceneStack.peek());
+		try {
+			if (sceneStack.size() >= 2) {			
+				sceneStack.pop();
+				Parent root = FXMLLoader.load(Main.class.getResource(sceneStack.peek()));
+				
+				Scene scene = new Scene(root);
+				
+				stage.setScene(scene);
+			}
+		} catch (IOException e) {
+			ConsolePrinter.printError(e.getMessage() + ". could not find view file.");
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
 		}
 	}
 }

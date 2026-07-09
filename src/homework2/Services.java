@@ -339,13 +339,46 @@ public class Services {
 		return null;
 	}
 	
-	// prompt for rider and order and attempt to assign them to eachother, returns true if succeded
-	public static boolean assignOrderToRider(ArrayList<Rider> riders, ArrayList<Order> orders) {
-		
+//	// prompt for rider and order and attempt to assign them to eachother, returns true if succeded
+//	public static boolean assignOrderToRider(ArrayList<Rider> riders, ArrayList<Order> orders) {
+//		
+//		try {
+//			Rider rider = findRider(UserInput.getId(), riders);
+//			Order order = findOrder(UserInput.getInt("order"), orders);
+//			
+//			if (rider == null || order == null) {
+//				throw new Exception("rider or order could not be found");
+//			}
+//			
+//			// rider is available and order does not have a rider assigned yet
+//			if (rider.getAvailable() && order.getDriverId() == null){
+//				boolean added = rider.addOrder(order);
+//				if(added) {
+//					System.out.println("assigned rider " + rider.getId() + " to order " + order.getOrderCode());
+//					// update order
+//					order.setDriverId(rider.getId());
+//					order.setDeliveryStatus("on the way");
+//					return true;
+//				} else {
+//					throw new Exception("failed to add order to rider");
+//				}
+//			}
+//			
+//			if(!rider.getAvailable()) System.out.println("rider not available");
+//			else if(order.getDriverId() != null) System.out.println("order already has rider assigned");
+//			
+//		} catch (RiderNotFoundException e) {
+//			ConsolePrinter.printError(e);
+//		} catch (Exception e) {
+//			ConsolePrinter.printError(e);
+//		}
+//		
+//		return false;
+//	}
+	
+	// for a rider and order, attempt to assign them to eachother, returns true if succeded
+	public static boolean assignOrderToRider(Rider rider, Order order) {
 		try {
-			Rider rider = findRider(UserInput.getId(), riders);
-			Order order = findOrder(UserInput.getInt("order"), orders);
-			
 			if (rider == null || order == null) {
 				throw new Exception("rider or order could not be found");
 			}
@@ -354,25 +387,24 @@ public class Services {
 			if (rider.getAvailable() && order.getDriverId() == null){
 				boolean added = rider.addOrder(order);
 				if(added) {
-					System.out.println("assigned rider " + rider.getId() + " to order " + order.getOrderCode());
 					// update order
 					order.setDriverId(rider.getId());
 					order.setDeliveryStatus("on the way");
+					
 					return true;
 				} else {
 					throw new Exception("failed to add order to rider");
 				}
 			}
 			
-			if(!rider.getAvailable()) System.out.println("rider not available");
-			else if(order.getDriverId() != null) System.out.println("order already has rider assigned");
+			if(!rider.getAvailable()) throw new Exception("rider not available");
+			else if(order.getDriverId() != null) throw new Exception("order already has rider assigned");
 			
 		} catch (RiderNotFoundException e) {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {
 			ConsolePrinter.printError(e);
 		}
-		
 		return false;
 	}
 	

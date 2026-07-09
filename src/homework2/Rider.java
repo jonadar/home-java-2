@@ -59,7 +59,12 @@ public class Rider {
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
-
+	
+	// bypass checks and avaiability
+	public void addOrderFromSave(Order order) {
+		this.orders.add(order);
+	}
+	
 	public boolean addOrder(Order order) {
 		if(order == null) return false;
 		if(!Validation.validateNotInArray(order, this.orders)) {

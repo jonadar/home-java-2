@@ -9,6 +9,7 @@ import homework2.Customer;
 import homework2.Order;
 import homework2.RestAdmin;
 import homework2.Restaurant;
+import homework2.Rider;
 import homework2.Services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,12 +108,13 @@ public class RestAdminUserPageController {
     	try {
     		Integer orderCode = Integer.parseInt(orderCodeText.getText());
     		String riderId = riderCodeText.getText();
-    		for (Order o : Main.DDB.getOrders()) {
-    			if (o.getOrderCode() == orderCode && !o.getDeliveryStatus().equals("delivered")) {
-    				o.setDriverId(riderId);
-    			}
-				
-			}
+    		Order order = Services.findOrder(orderCode, Main.DDB.getOrders());
+    		Rider rider = Services.findRider(riderId, Main.DDB.getRiders());
+    		
+    		if(order == null) throw new Exception("order with code " + orderCode + " not found");
+    		
+    		if(Services.assignOrderToRider(rider, order)) ConsolePrinter.inform("assigned");
+    		
     	} catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {
@@ -120,27 +122,22 @@ public class RestAdminUserPageController {
     	}
     }
 
-    @FXML
-    void closeOrOpenRestaurant(ActionEvent event) {
-    	Restaurant selectedRes = restaurantTable.getSelectionModel().getSelectedItem();
-    	if (selectedRes != null) {
-    		selectedRes.setOpen(!selectedRes.isOpen()); // הופך את הסטטוס
-    	}
-    }
+    
 
     @FXML
     void updateRestaurantRating(ActionEvent event) {
     	try {
-        	Integer code = Integer.parseInt(uptresrateTextCode.getText());
+    		Restaurant selectedRes = restaurantTable.getSelectionModel().getSelectedItem();
         	Double rate = Double.parseDouble(uptresrateTextRate.getText());
-        	for (Restaurant r : restaurantAdmin.getRestaurants()) {
-        		if (r.getRestaurantCode() == code) {
-				r.setRating(rate);
-        		}
-			}
+        	if (selectedRes != null) {
+    			selectedRes.setRating(rate);
+    			restaurantTable.refresh();
+    		} else throw new Exception("select restaurant first from table");
     	} catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
+			ConsolePrinter.printError("rating must be a number");
+		}catch (Exception e) {
 			ConsolePrinter.printError(e);	
     	}
     }
@@ -184,28 +181,61 @@ public class RestAdminUserPageController {
     }
     
     @FXML
+    void closeRestaurant(ActionEvent event) {
+    	try {    		
+    		Restaurant selectedRes = restaurantTable.getSelectionModel().getSelectedItem();
+    		if (selectedRes != null) {
+    			selectedRes.setOpen(false);
+    			restaurantTable.refresh();
+    		} else throw new Exception("select restaurant first");
+    	} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+    }
+
+    @FXML
+    void openRestaurant(ActionEvent event) {
+    	try {    		
+    		Restaurant selectedRes = restaurantTable.getSelectionModel().getSelectedItem();
+    		if (selectedRes != null) {
+    			selectedRes.setOpen(true);  
+    			restaurantTable.refresh();
+    		} else throw new Exception("select restaurant first");
+    	} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+    }
+    
+    @FXML
+    void viewAllOrders() {
+    	orderTable.setItems(FXCollections.observableArrayList(Main.DDB.getOrdersOfRestaurant(restaurantAdmin))); 
+    }
+    
+    @FXML
     void initialize() {
-        codeCol.setCellValueFactory(new PropertyValueFactory<>("orderCode"));
-        restaurantCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
-        orderDateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
-        deliveryDateCol.setCellValueFactory(new PropertyValueFactory<>("deliveryDate"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("finalPrice"));
-        riderCol.setCellValueFactory(new PropertyValueFactory<>("driverId"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("deliveryStatus"));
-        
-        deliveryFeeCol.setCellValueFactory(new PropertyValueFactory<>("deliveryFee"));
-        kitchenTypeCol.setCellValueFactory(new PropertyValueFactory<>("kitchenType"));
-        ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        restCodeCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
-        restNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        restOpenCol.setCellValueFactory(new PropertyValueFactory<>("isOpen"));
-        
-        if(restaurantAdmin == null) {
-        	ConsolePrinter.printError("no restaurant admin initialized...");
-        	Main.goBackScene();
-        }
-        
-        restaurantTable.setItems(FXCollections.observableArrayList(restaurantAdmin.getRestaurants()));
+		codeCol.setCellValueFactory(new PropertyValueFactory<>("orderCode"));
+		restaurantCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
+		orderDateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+		deliveryDateCol.setCellValueFactory(new PropertyValueFactory<>("deliveryDate"));
+		priceCol.setCellValueFactory(new PropertyValueFactory<>("finalPrice"));
+		riderCol.setCellValueFactory(new PropertyValueFactory<>("driverId"));
+		statusCol.setCellValueFactory(new PropertyValueFactory<>("deliveryStatus"));
+		
+		deliveryFeeCol.setCellValueFactory(new PropertyValueFactory<>("deliveryFee"));
+		kitchenTypeCol.setCellValueFactory(new PropertyValueFactory<>("kitchenType"));
+		ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
+		restCodeCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
+		restNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+		restOpenCol.setCellValueFactory(new PropertyValueFactory<>("isOpen"));
+		
+		if(restaurantAdmin == null) {
+			ConsolePrinter.printError("no restaurant admin initialized...");
+			Main.goBackScene();
+		}
+		    
+		orderTable.setItems(FXCollections.observableArrayList(Main.DDB.getOrdersOfRestaurant(restaurantAdmin))); 
+	   
+		restaurantTable.setItems(FXCollections.observableArrayList(restaurantAdmin.getRestaurants()));
     }
     
     

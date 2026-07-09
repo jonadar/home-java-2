@@ -48,54 +48,53 @@
       <TextField fx:id="riderCodeText" layoutX="859.0" layoutY="476.0" prefHeight="25.0" prefWidth="108.0" promptText="rider code" />
       <TextField fx:id="orderCodeText" layoutX="967.0" layoutY="476.0" prefHeight="25.0" prefWidth="98.0" promptText="order code" />
       <Button layoutX="857.0" layoutY="526.0" mnemonicParsing="false" onAction="#updateRestaurantRating" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="update restaurant rating" />
-      <TextField fx:id="uptresrateTextCode" layoutX="857.0" layoutY="553.0" prefHeight="25.0" prefWidth="108.0" promptText="code" />
-      <TextField fx:id="uptresrateTextRate" layoutX="965.0" layoutY="553.0" prefHeight="25.0" prefWidth="98.0" promptText="rateing" />
-      <Button layoutX="856.0" layoutY="590.0" mnemonicParsing="false" onAction="#closeOrOpenRestaurant" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="close or open restaurant" />
-      <TextField layoutX="856.0" layoutY="617.0" prefHeight="25.0" prefWidth="108.0" />
-      <TextField layoutX="964.0" layoutY="617.0" prefHeight="25.0" prefWidth="98.0" />
-      <VBox layoutX="867.0" layoutY="108.0" prefHeight="266.0" prefWidth="203.0">
+      <TextField fx:id="uptresrateTextRate" layoutX="860.0" layoutY="553.0" prefHeight="25.0" prefWidth="203.0" promptText="rating" />
+      <Button layoutX="856.0" layoutY="590.0" mnemonicParsing="false" onAction="#closeRestaurant" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="close restaurant" />
+      <VBox layoutX="867.0" layoutY="108.0" prefHeight="318.0" prefWidth="203.0" spacing="8.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view restaurant report">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#viewOrdersByRestaurantCode" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view orders by restaurant code">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
-            <TextField fx:id="viewOrderText" prefHeight="25.0" prefWidth="206.0">
+            <TextField fx:id="viewOrderText" prefHeight="25.0" prefWidth="206.0" promptText="restaurant code">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </TextField>
             <Button mnemonicParsing="false" onAction="#viewMyRestaurants" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view my restaurants">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#viewOpenRestaurantsByType" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view open restaurants by type">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
-            <TextField fx:id="viewOpenResByKText" prefHeight="25.0" prefWidth="206.0">
+            <TextField fx:id="viewOpenResByKText" prefHeight="25.0" prefWidth="206.0" promptText="kitchen type">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </TextField>
             <Button mnemonicParsing="false" onAction="#addCustomer" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="create customer">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#addOrder" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="create Order">
                <VBox.margin>
-                  <Insets top="8.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#viewAllOrders" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view all orders" />
          </children>
       </VBox>
+      <Button layoutX="856.0" layoutY="617.0" mnemonicParsing="false" onAction="#openRestaurant" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="open restaurant" />
    </children>
 </AnchorPane>
