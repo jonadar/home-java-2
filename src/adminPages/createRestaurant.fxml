@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,14 +37,6 @@
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin></TextField>
-            <Label text="isOpen">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin></Label>
-            <TextField fx:id="isOpenText">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin></TextField>
             <Label prefHeight="17.0" prefWidth="243.0" text="deliveryFee">
                <VBox.margin>
                   <Insets top="5.0" />
@@ -52,6 +45,11 @@
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin></TextField>
+            <CheckBox fx:id="isOpenCheckbox" mnemonicParsing="false" prefHeight="17.0" prefWidth="253.0" text="isOpen">
+               <padding>
+                  <Insets bottom="6.0" right="6.0" top="6.0" />
+               </padding>
+            </CheckBox>
             <Button alignment="CENTER" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="229.0" style="-fx-background-color: #74fbdb; -fx-border-color: #74b5fb;" text="create" textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="5.0" />

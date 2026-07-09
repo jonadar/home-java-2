@@ -3,6 +3,7 @@ package controllers;
 
 import java.util.stream.Collectors;
 
+import MyExceptions.InvalidPropertyException;
 import Utils.ConsolePrinter;
 import application.Main;
 import homework2.RestAdmin;
@@ -39,9 +40,6 @@ public class restaurantPageController {
 
     @FXML
     private TableColumn<Restaurant, String> typeCol;
-    
-    @FXML
-    private TextField opnClosRestText;
   
     @FXML
     private TextField resByTypeText;
@@ -63,11 +61,12 @@ public class restaurantPageController {
     @FXML
     void closeRest(ActionEvent event) {
     	try {
-        	Integer code = Integer.parseInt(opnClosRestText.getText());
-        	Restaurant res = Services.findRestaurant(code, Main.DDB.getRestaurants());
-        	if (res != null) {
-        		res.setOpen(false);
-        	}
+        	Restaurant res = resTbl.getSelectionModel().getSelectedItem();
+        	
+        	if (res == null) throw new Exception("no restaurant selected");
+      	
+    		res.setOpen(false);
+    		resTbl.refresh(); 
     	} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
@@ -76,11 +75,12 @@ public class restaurantPageController {
     @FXML
     void openRest(ActionEvent event) {
     	try {
-        	Integer code = Integer.parseInt(opnClosRestText.getText());
-        	Restaurant res = Services.findRestaurant(code, Main.DDB.getRestaurants());
-        	if (res != null) {
-        		res.setOpen(true);
-        	}
+    		Restaurant res = resTbl.getSelectionModel().getSelectedItem();
+        	
+        	if (res == null) throw new Exception("no restaurant selected");
+      	
+    		res.setOpen(true);
+    		resTbl.refresh(); 
     	} catch (Exception e) {
 			ConsolePrinter.printError(e);
     	}
@@ -109,6 +109,7 @@ public class restaurantPageController {
 
     @FXML
     void showAllRestaurants(ActionEvent event) {
+    	restaurants = FXCollections.observableArrayList(Main.DDB.getRestaurants());
     	resTbl.setItems(restaurants);
     }
 
@@ -121,14 +122,27 @@ public class restaurantPageController {
 
     @FXML
     void updetRating(ActionEvent event) {
-    	//to do
+    	try {
+    		double rating = Double.parseDouble(updetRatingText.getText());
+    		Restaurant res = resTbl.getSelectionModel().getSelectedItem();
+    		
+        	if (res == null) throw new Exception("no restaurant selected");
+        	
+        	res.setRating(rating);
+    		resTbl.refresh(); 
+		} catch (NumberFormatException e) {
+			ConsolePrinter.printError("must enter valid number rating");
+		} catch (Exception e) {
+			ConsolePrinter.printError(e);
+		}
+    	
     }
     
     @FXML
     void exit(ActionEvent event) {
     	Main.goBackScene();
     }
-
+    
     public void initialize() {
     	codeCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
     	feeCol.setCellValueFactory(new PropertyValueFactory<>("deliveryFee"));

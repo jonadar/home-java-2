@@ -70,7 +70,6 @@ public class riderPageController {
     @FXML
     void showAllRiders(ActionEvent event) {
     	riderTbl.setItems(riders);
-
     }
 
     @FXML
@@ -82,7 +81,8 @@ public class riderPageController {
     	try {
 			Rider rider = Services.findRider(riderId, Main.DDB.getRiders());
 			ordersTbl.setItems(FXCollections.observableArrayList(rider.getOrders()));
-    	} catch (Exception e) {
+			ConsolePrinter.inform("displaying orders of rider - " + rider.getFullName());
+    	} catch (RiderNotFoundException e) {
 			ConsolePrinter.printError(e);
     	}
     }

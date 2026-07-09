@@ -33,12 +33,9 @@ public class Main extends Application {
 //		SaveManager.save(DDB);
 		
 		setScene("/application/loginPage.fxml");
-//		setScene("/adminPages/reportsAndSortingPage.fxml");
+//		setScene("/adminPages/restaurantPage.fxml");
 
 		primaryStage.show();
-		
-
-		
 	}
 	
 	public static void main(String[] args) {

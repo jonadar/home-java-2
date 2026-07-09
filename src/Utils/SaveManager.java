@@ -22,7 +22,7 @@ import homework2.Services;
 
 public class SaveManager {
 	
-	public static void save(DeliveryDataBase DDB) {
+	public static void save(DeliveryDataBase DDB){
 		saveCustomers(DDB.getCustomers());
 		saveOrders(DDB.getOrders());
 		saveRiders(DDB.getRiders());
@@ -63,7 +63,7 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			ConsolePrinter.printError("could not find order save");
 		}
 	}
 	
@@ -76,7 +76,7 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			ConsolePrinter.printError("could not find rider save");
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			ConsolePrinter.printError("could not find restaurants save");
 		}
 	}
 	
@@ -120,7 +120,7 @@ public class SaveManager {
 			}
 			writer.close();
 		} catch (IOException e) {
-			ConsolePrinter.printError("could not find customer save");
+			ConsolePrinter.printError("could not find restaurantAdmins save");
 		}
 	}
 	

@@ -40,7 +40,7 @@
       <VBox layoutX="551.0" layoutY="228.0" prefHeight="60.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#searchRes" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Search Restaurant by Code" textAlignment="CENTER" />
-            <TextField fx:id="searchResText" />
+            <TextField fx:id="searchResText" promptText="code" />
          </children>
       </VBox>
       <VBox layoutX="554.0" layoutY="109.0" prefHeight="99.0" prefWidth="199.0">
@@ -53,23 +53,19 @@
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin></Button>
-            <TextField fx:id="opnClosRestText">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin></TextField>
          </children>
       </VBox>
       <VBox layoutX="551.0" layoutY="307.0" prefHeight="67.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#updetRating" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Update Restaurant Rating" textAlignment="CENTER" />
-            <TextField fx:id="updetRatingText" />
+            <TextField fx:id="updetRatingText" promptText="rating" />
          </children>
       </VBox>
       <Button layoutX="72.0" layoutY="434.0" mnemonicParsing="false" onAction="#addNewRestaurant" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Add New Restaurant" textAlignment="CENTER" />
       <VBox layoutX="550.0" layoutY="389.0" prefHeight="60.0" prefWidth="199.0">
          <children>
             <Button mnemonicParsing="false" onAction="#resByType" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show Restaurants by Type" textAlignment="CENTER" />
-            <TextField fx:id="resByTypeText" />
+            <TextField fx:id="resByTypeText" promptText="type" />
          </children>
       </VBox>
    </children>

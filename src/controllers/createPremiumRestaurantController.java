@@ -8,6 +8,7 @@ import homework2.PremiumRestaurant;
 import homework2.Restaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class createPremiumRestaurantController {
@@ -16,7 +17,7 @@ public class createPremiumRestaurantController {
     private TextField deliveryFeeText;
 
     @FXML
-    private TextField isOpenText;
+    private CheckBox isOpenCheckbox;
 
     @FXML
     private TextField kitchenTypeText;
@@ -41,10 +42,14 @@ public class createPremiumRestaurantController {
         	
     		Double deliveryFee = Double.parseDouble(deliveryFeeText.getText());
         	Double rating = Double.parseDouble(ratingText.getText());
-        	Boolean isOpen = Boolean.parseBoolean(isOpenText.getText());
+        	Boolean isOpen = isOpenCheckbox.isSelected();
         	PremiumRestaurant res = new PremiumRestaurant(nameText.getText(), kitchenTypeText.getText(), rating, isOpen, deliveryFee, minOrderValue,orderFeePercentage);
         	Main.DDB.addRestaurant(res);
-    	}  catch (InvalidPropertyException e) {
+        	ConsolePrinter.inform("created and added restaurant");
+        	Main.goBackScene();
+    	} catch (NumberFormatException e) {
+			ConsolePrinter.printError("could not parse values, make sure minOrderValue, orderFeePercentage, deliveryFee and rating are all numbers");
+		} catch (InvalidPropertyException e) {
 			ConsolePrinter.printError(e);
 		} catch (Exception e) {
 			ConsolePrinter.printError(e);
