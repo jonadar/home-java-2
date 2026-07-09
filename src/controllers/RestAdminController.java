@@ -16,7 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class RestAdminController {
 
 	private ObservableList<RestAdmin> restAdmins = FXCollections.observableArrayList(Main.DDB.getRestaurantAdmins());
-
+	public static RestAdmin resAdmin;
 
     @FXML
     private TableColumn<RestAdmin, String> colname;
@@ -63,7 +63,8 @@ public class RestAdminController {
 
     @FXML
     void updateManagerStatus(ActionEvent event) {
-    	// to do
+    	resAdmin = tblAllRestAdmin.getSelectionModel().getSelectedItem();
+    	Main.setScene("/adminPages/restMangerStatus.fxml");
 
     }
     
