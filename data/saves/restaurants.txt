@@ -1,4 +1,4 @@
-Reg;the big fat whale;mexican;2.0;true;8.0
+Reg;the big fat whale;mexican;2.0;false;8.0
 Reg;flying dutch people;big;5.0;true;10.0
 Reg;kuu & kang;small;5.0;true;10.0
 Reg;the small not fat whale;kosher;5.0;true;10.0

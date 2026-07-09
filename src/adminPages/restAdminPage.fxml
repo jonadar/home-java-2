@@ -21,7 +21,7 @@
             <Button mnemonicParsing="false" onAction="#showAllMangers" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show All Restaurant Managers" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="622.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
+      <Button layoutX="622.0" layoutY="267.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

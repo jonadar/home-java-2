@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="609.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reportController">
    <children>
-      <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="23.0" prefWidth="225.0" text="Reports And Sortings Screen" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="1.0" layoutY="2.0" prefHeight="27.0" prefWidth="355.0" text="Reports And Sortings Screen" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="18.0" />
          </font>
@@ -26,13 +26,14 @@
             <Button layoutX="10.0" layoutY="163.0" mnemonicParsing="false" onAction="#showAllLuxuryRestaurants" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show All Luxury Restaurants" textAlignment="CENTER" />
             <Button layoutX="10.0" layoutY="194.0" mnemonicParsing="false" onAction="#showAllAvailableRiders" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show All Available Riders" textAlignment="CENTER" />
             <Button layoutX="10.0" layoutY="225.0" mnemonicParsing="false" onAction="#showTotalPayments" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show Total Payments" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#viewSystemReport" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view system report" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
+      <Button layoutX="768.0" layoutY="564.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <TableView fx:id="CustomersTbl" layoutX="14.0" layoutY="75.0" prefHeight="120.0" prefWidth="343.0">
+      <TableView fx:id="customerTable" layoutX="14.0" layoutY="75.0" prefHeight="120.0" prefWidth="343.0">
          <columns>
             <TableColumn fx:id="cusCodeCol" prefWidth="75.0" text="code" />
             <TableColumn fx:id="cusNameCol" prefWidth="75.0" text="name" />
@@ -40,7 +41,7 @@
             <TableColumn fx:id="cusCreditCol" prefWidth="111.33332824707031" text="remainingCredit" />
          </columns>
       </TableView>
-      <TableView fx:id="tblAllOrders" layoutX="14.0" layoutY="451.0" prefHeight="143.0" prefWidth="590.0">
+      <TableView fx:id="orderTable" layoutX="14.0" layoutY="451.0" prefHeight="143.0" prefWidth="590.0">
          <columns>
             <TableColumn fx:id="codeCol" prefWidth="50.00003433227539" text="code" />
             <TableColumn fx:id="customerCol" prefWidth="75.0" text="customer" />
@@ -52,23 +53,23 @@
             <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="57.55560302734375" text="status" />
          </columns>
       </TableView>
-      <TableView fx:id="resTbl" layoutX="14.0" layoutY="305.0" prefHeight="134.0" prefWidth="461.0">
+      <TableView fx:id="restaurantTable" layoutX="14.0" layoutY="305.0" prefHeight="134.0" prefWidth="461.0">
          <columns>
-            <TableColumn fx:id="codeCol1" prefWidth="75.0" text="code" />
-            <TableColumn fx:id="nameCol" prefWidth="75.0" text="name" />
-            <TableColumn fx:id="isOpenCol" prefWidth="75.0" text="isOpen" />
-            <TableColumn fx:id="typeCol" prefWidth="75.0" text="kitchenType" />
-            <TableColumn fx:id="ratingCol" prefWidth="75.0" text="rating" />
-            <TableColumn fx:id="feeCol" prefWidth="75.0" text="deliveryFee" />
+            <TableColumn fx:id="resCodeCol" prefWidth="75.0" text="code" />
+            <TableColumn fx:id="resNameCol" prefWidth="75.0" text="name" />
+            <TableColumn fx:id="resOpenCol" prefWidth="75.0" text="isOpen" />
+            <TableColumn fx:id="resTypeCol" prefWidth="75.0" text="kitchenType" />
+            <TableColumn fx:id="resRatingCol" prefWidth="75.0" text="rating" />
+            <TableColumn fx:id="resFeeCol" prefWidth="75.0" text="deliveryFee" />
          </columns>
       </TableView>
-      <TableView fx:id="riderTbl" layoutX="14.0" layoutY="205.0" prefHeight="91.0" prefWidth="401.0">
+      <TableView fx:id="riderTable" layoutX="14.0" layoutY="205.0" prefHeight="91.0" prefWidth="401.0">
          <columns>
-            <TableColumn fx:id="colname" prefWidth="75.0" text="name" />
-            <TableColumn fx:id="colphone" prefWidth="91.99996185302734" text="phoneNumber" />
-            <TableColumn fx:id="colid" prefWidth="82.66671752929688" text="id" />
-            <TableColumn fx:id="colAvailable" prefWidth="67.33331298828125" text="isAvailable" />
-            <TableColumn fx:id="colvehicle" prefWidth="75.0" text="vehicle" />
+            <TableColumn fx:id="riderNameCol" prefWidth="75.0" text="name" />
+            <TableColumn fx:id="riderPhoneCol" prefWidth="91.99996185302734" text="phoneNumber" />
+            <TableColumn fx:id="riderIdCol" prefWidth="82.66671752929688" text="id" />
+            <TableColumn fx:id="riderAvailableCol" prefWidth="67.33331298828125" text="isAvailable" />
+            <TableColumn fx:id="riderVehicleCol" prefWidth="75.0" text="vehicle" />
          </columns>
       </TableView>
    </children>

@@ -96,11 +96,9 @@ public class riderPageController {
         	if (rider != null) {
         		riderTbl.setItems(FXCollections.observableArrayList(rider));
         	}
-        }catch (Exception e) {
+        } catch (Exception e) {
     		ConsolePrinter.printError(e);
         }
-    	
-    	
     }
 
     @FXML
@@ -114,7 +112,11 @@ public class riderPageController {
 				ConsolePrinter.printError(e);
 			}
     	}
-
+    }
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
     }
     
     // to do

@@ -122,7 +122,7 @@ public class Admin {
 					SystemReports.addNewFastfoodRestaurant(DDB.getRestaurants()); // not good, but they asked for it :(
 					break;
 				case 15:
-					DDB.showPremiumRestaurants();
+//					DDB.showPremiumRestaurants();
 					break;
 			}
 		}

@@ -41,17 +41,18 @@ public class AdminPageController {
     
     @FXML
     void reportsAndSorting(ActionEvent event) {
-    	ConsolePrinter.printError("not yet implemented :(");
-    	//TODO
+    	Main.setScene("/adminPages/reportsAndSortingPage.fxml");
     }
     
     @FXML
     void save(ActionEvent event) {
     	SaveManager.save(Main.DDB);
+    	//TODO inform if manages or fails
     }
     
     @FXML
     void load(ActionEvent event) {
     	SaveManager.load(Main.DDB);
+    	//TODO inform if manages or fails
     }
 }

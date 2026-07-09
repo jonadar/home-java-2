@@ -152,6 +152,11 @@ public class customerPageController {
 
 
     }
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
+    }
 
     
     public void initialize() {

@@ -116,8 +116,11 @@ public class OrdersPageController {
 	    } catch (Exception e) {
 			ConsolePrinter.printError(e);
 		}
-    	
-
+    }
+    
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
     }
 
     @FXML

@@ -78,6 +78,11 @@ public class RestAdminController {
 
     }
     
+    @FXML
+    void exit(ActionEvent event) {
+    	Main.goBackScene();
+    }
+    
     public void initialize() {
     	colname.setCellValueFactory(new PropertyValueFactory<>("name"));
     	colusername.setCellValueFactory(new PropertyValueFactory<>("username"));

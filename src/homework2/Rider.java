@@ -33,6 +33,7 @@ public class Rider {
 	public String getPhoneNumber() { return phoneNumber; }
 	public String getVehicle() { return vehicle; }
 	public ArrayList<Order> getOrders() { return orders; }
+	public boolean getIsAvailable() { return isAvailable; } // needed for property factory in javaFx
 	public boolean getAvailable() { return isAvailable; }
 
 	public void setId(String id) throws InvalidPropertyException{

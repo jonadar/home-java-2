@@ -22,7 +22,7 @@
             <Button mnemonicParsing="false" onAction="#showHighestPriceOrder" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show Highest Priced Order" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="826.0" layoutY="369.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
+      <Button layoutX="826.0" layoutY="369.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

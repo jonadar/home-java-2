@@ -63,7 +63,7 @@ public class RestAdmin extends Admin{
 					DDB.addRider(r);
 					break;
 				case 4:
-					DDB.showAvailableRiders();
+//					DDB.showAvailableRiders();
 					Services.assignOrderToRider(DDB.getRiders(), DDB.getOrders());
 					break;
 				case 5:
@@ -73,7 +73,7 @@ public class RestAdmin extends Admin{
 					DDB.showOpenRestaurantsByKitchenType(this);
 					break;
 				case 7:
-					DDB.showOpenRestaurants();
+//					DDB.showOpenRestaurants();
 					break;
 			}
 		}

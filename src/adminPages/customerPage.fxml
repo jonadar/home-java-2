@@ -23,7 +23,7 @@
             <Button mnemonicParsing="false" onAction="#updateCustomerDetails" prefWidth="350.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Update customer details" />
          </children>
       </VBox>
-      <Button layoutX="824.0" layoutY="459.0" mnemonicParsing="false" style="-fx-background-color: red;" text="exit">
+      <Button layoutX="824.0" layoutY="459.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: red;" text="exit">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

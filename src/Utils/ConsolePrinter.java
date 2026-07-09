@@ -14,4 +14,9 @@ public class ConsolePrinter {
 		Alert alert = new Alert(AlertType.ERROR, message);
 		alert.showAndWait();
 	}
+	
+	public static void inform(String message) {
+		Alert alert = new Alert(AlertType.INFORMATION, message);
+		alert.showAndWait();
+    }
 }

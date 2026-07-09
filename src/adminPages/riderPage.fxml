@@ -24,7 +24,7 @@
             <Button mnemonicParsing="false" onAction="#showRiderwithMostDeliveries" prefWidth="200.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="Show Rider with Most Deliveries" textAlignment="CENTER" />
          </children>
       </VBox>
-      <Button layoutX="652.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
+      <Button layoutX="652.0" layoutY="436.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: red;" text="exit" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

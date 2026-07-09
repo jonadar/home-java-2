@@ -481,21 +481,73 @@ public class DeliveryDataBase {
 		}
 	}
 	
+	public void sortCustomersByCredit() {
+		Collections.sort(this.customers); // sorts by remaining credit, customer implements Comparable.
+	}
+	
+	public void sortCustomersByFirstName() {
+		this.customers.sort((c1, c2) -> c1.getFirstName().compareTo(c2.getFirstName())); // sorts by remaining credit, customer implements Comparable.
+	}
+	
+	public void sortRidersByDeliveries() {
+		this.riders.sort((r1, r2) -> {
+			int r1deliveries = r1.getOrders().size() - riderPedningOrders(r1.getId()).size();
+			int r2deliveries = r2.getOrders().size() - riderPedningOrders(r2.getId()).size();
+			return Integer.compare(r2deliveries, r1deliveries); // highest to lowest
+		});
+	}
+	
+	public void sortOrdersByDate(){
+		this.orders.sort((o1, o2) -> {
+			try {
+				String[] split1 = o1.getOrderDate().split("/");
+				String[] split2 = o2.getOrderDate().split("/");
+				
+				int year1 = Integer.parseInt(split1[2]);
+				int year2 = Integer.parseInt(split2[2]);
+				
+				if (year1 != year2) return Integer.compare(year1, year2);
+				
+				int month1 = Integer.parseInt(split1[1]);
+				int month2 = Integer.parseInt(split2[1]);
+				
+				if (month1 != month2) return Integer.compare(month1, month2);
+				
+				int day1 = Integer.parseInt(split1[0]);
+				int day2 = Integer.parseInt(split2[0]);
+				
+				return Integer.compare(day1, day2);
+			} catch (NumberFormatException e) {
+				ConsolePrinter.printError("an order date was invalid");
+			} catch (Exception e) {
+				ConsolePrinter.printError("an order date was in wrong format");
+			}
+			
+			return 0;
+		});
+	}
+	
+	public void sortOrdersByFinalPrice() {
+		this.orders.sort(Order.getComparator());
+	}
+	
+	public void sortRestaurantsByRating() {
+		this.restaurants.sort(Restaurant.getComparator()); // highest to lowest
+	}
+	
+	
 	// ======================= bonuses using Stream API ==========================
 	
-	public void showOpenRestaurants() {
-		System.out.println("open restaurants: ");
-		this.restaurants.stream().filter(Restaurant::isOpen).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
+	public List<Restaurant> getOpenRestaurants() {
+		return this.restaurants.stream().filter(Restaurant::isOpen).collect(Collectors.toList());
 	}
 	
-	public void showPremiumRestaurants() {
-		System.out.println("premium restaurants: ");
-		this.restaurants.stream().filter(rest -> rest instanceof PremiumRestaurant).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
+	public List<Restaurant> getPremiumRestaurants() {
+		return this.restaurants.stream().filter(rest -> rest instanceof PremiumRestaurant).collect(Collectors.toList());
 	}
 	
-	public void showAvailableRiders() {
-		System.out.println("available riders: ");
-		this.riders.stream().filter(Rider.checkAvailable).collect(Collectors.toList()).forEach(System.out::println); // check if for each okay or if needed map function
+	public List<Rider> getAvailableRiders() {
+		return this.riders.stream().filter(Rider.checkAvailable).collect(Collectors.toList());
 	}
 	
 	public double getSumOfAllOrdersPrices() {
