@@ -52,7 +52,7 @@
       <Button layoutX="856.0" layoutY="590.0" mnemonicParsing="false" onAction="#closeRestaurant" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="close restaurant" />
       <VBox layoutX="867.0" layoutY="108.0" prefHeight="318.0" prefWidth="203.0" spacing="8.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view restaurant report">
+            <Button mnemonicParsing="false" onAction="#viewReport" prefHeight="26.0" prefWidth="208.0" style="-fx-background-color: #74d7fb; -fx-border-color: #74fbdb;" text="view restaurant report">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

@@ -31,9 +31,6 @@ public class RestAdminController {
     private TextField idResttext;
 
     @FXML
-    private TextField text2;
-
-    @FXML
     private TextField text3;
 
     @FXML
@@ -61,11 +58,19 @@ public class RestAdminController {
     	}
     }
 
-
     @FXML
     void updateManagerStatus(ActionEvent event) {
-    	resAdmin = tblAllRestAdmin.getSelectionModel().getSelectedItem();
-    	Main.setScene("/adminPages/restMangerStatus.fxml");
+    	try {    		
+    		RestAdmin selected = tblAllRestAdmin.getSelectionModel().getSelectedItem();
+    		
+    		if(selected == null) throw new Exception("no rest admin selected in table");
+    		
+    		resAdmin = selected;
+    		
+    		Main.setScene("/adminPages/restMangerStatus.fxml");
+    	} catch (Exception e) {
+    		ConsolePrinter.printError(e);
+		}
 
     }
     

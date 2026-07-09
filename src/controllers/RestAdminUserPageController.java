@@ -11,6 +11,7 @@ import homework2.RestAdmin;
 import homework2.Restaurant;
 import homework2.Rider;
 import homework2.Services;
+import homework2.SystemReports;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -212,6 +213,16 @@ public class RestAdminUserPageController {
     }
     
     @FXML
+    void viewReport(ActionEvent event) {
+    	String message = "";
+    	message += "admin has " + Main.DDB.getOrdersOfRestaurant(restaurantAdmin).size() + " orders in their restaurants.\n";
+    	message += "admin has " + restaurantAdmin.getRestaurants().size() + " restaurants.\n";
+    	message += "total orders value is " + SystemReports.getTotalOrderFinalPriceSum(new ArrayList(Main.DDB.getOrdersOfRestaurant(restaurantAdmin))) + "\n";
+		
+		ConsolePrinter.inform(message);
+    }
+    
+    @FXML
     void initialize() {
 		codeCol.setCellValueFactory(new PropertyValueFactory<>("orderCode"));
 		restaurantCol.setCellValueFactory(new PropertyValueFactory<>("restaurantCode"));
@@ -233,7 +244,7 @@ public class RestAdminUserPageController {
 			Main.goBackScene();
 		}
 		    
-		orderTable.setItems(FXCollections.observableArrayList(Main.DDB.getOrdersOfRestaurant(restaurantAdmin))); 
+		orderTable.setItems(FXCollections.observableArrayList(Main.DDB.getOrdersOfRestaurant(restaurantAdmin)));
 	   
 		restaurantTable.setItems(FXCollections.observableArrayList(restaurantAdmin.getRestaurants()));
     }
